@@ -1,0 +1,82 @@
+.invoices__header {
+  margin: 32px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invoices__header h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: -0.625px;
+  color: #0c0e16;
+}
+
+.invoices--sub {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #888eb0;
+}
+
+
+.btn__actions {
+    display: flex;
+}
+
+.filter {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+
+.filter p {
+  margin-right: 12px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  text-align: right;
+  letter-spacing: -0.25px;
+
+  color: #0c0e16;
+}
+
+.filter img {
+  object-fit: contain;
+}
+
+.btn--add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #7c5dfa;
+  margin-left: 18px;
+  padding: 6px;
+  padding-right: 18px;
+  border-radius: 24px;
+}
+
+.btn--add > div:first-child {
+    width: 32px;
+    height: 32px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.btn--add p {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+
+  letter-spacing: -0.25px;
+
+  color: #ffffff;
+  margin-left: 8px;
+}
