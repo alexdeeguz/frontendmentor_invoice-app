@@ -1,26 +1,13 @@
 import "./invoices.css";
+import InvoiceListItem from "./InvoicesListItem";
+import InvoicesHeader from "./InvoicesHeader";
 
 const Invoices = () => {
   return (
-    <div className="invoices__header">
-      <div>
-        <h1>Invoices</h1>
-        <p className="invoices--sub">7 invoices</p>
-      </div>
+    <div>
+      <InvoicesHeader />
 
-      <div className="btn__actions">
-        <div className="filter">
-            <p>Filter</p>
-            <img src="/assets/icon-arrow-down.svg" />
-        </div>
-
-        <div className="btn--add">
-            <div>
-                <img src="assets/icon-plus.svg" />
-            </div>
-            <p>New</p>
-        </div>
-      </div>
+      <InvoiceListItem />
     </div>
   );
 };

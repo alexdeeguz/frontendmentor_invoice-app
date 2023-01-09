@@ -69,3 +69,6 @@ h6 {
   isolation: isolate;
 }
 
+.container {
+  margin: 32px 24px;
+}

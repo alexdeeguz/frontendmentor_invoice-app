@@ -1,5 +1,7 @@
+/* INVOICES HEADER */
+
 .invoices__header {
-  margin: 32px 24px;
+  /* margin: 32px 24px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,9 +23,8 @@
   color: #888eb0;
 }
 
-
 .btn__actions {
-    display: flex;
+  display: flex;
 }
 
 .filter {
@@ -61,13 +62,13 @@
 }
 
 .btn--add > div:first-child {
-    width: 32px;
-    height: 32px;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
 }
 
 .btn--add p {
@@ -79,4 +80,128 @@
 
   color: #ffffff;
   margin-left: 8px;
+}
+
+/* INVOICES  LIST AND CARD COMPONENTS */
+
+.invoice__item {
+  margin-bottom: 16px;
+  background: white;
+  padding: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 50px 1px rgba(0, 0, 0, 0.1);
+}
+
+.invoice__item div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice__item--id {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+
+  color: #0c0e16;
+}
+
+.invoice__item--name {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  text-align: right;
+  letter-spacing: -0.25px;
+
+  color: #858bb2;
+}
+
+.invoice__status {
+  margin-top: 24px;
+  align-items: center;
+}
+
+.invoice__status > div {
+  flex-direction: column;
+}
+
+.invoice__status--date {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+
+  color: #888eb0;
+}
+
+.invoice__status--price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  letter-spacing: -0.8px;
+
+  color: #0c0e16;
+}
+
+.tag {
+    width: 104px;
+    height: 40px;
+    font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        /* identical to box height, or 125% */
+    
+        letter-spacing: -0.25px;
+        position: relative;
+}
+
+.tag li {
+    list-style-position: inside;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.tag--success {
+  color: #33d69f;
+}
+
+.tag--pending {
+    color: #FF8F00;
+}
+
+.tag--draft {
+    color: black;
+}
+
+.tag__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: normal;
+    opacity: 0.06;
+    border-radius: 6px;
+}
+
+.tag__overlay--pending {
+    background: #FF8F00;
+}
+
+.tag__overlay--success {
+    background: #33D69F;
+}
+
+.tag__overlay--draft {
+    background: #373B53;
 }
