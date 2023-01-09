@@ -8,7 +8,7 @@ const Invoices = () => {
     <>
       <InvoicesHeader />
 
-      {/* <InvoiceListItem /> */}
+      <InvoiceListItem />
       <MissingData />
     </>
   );

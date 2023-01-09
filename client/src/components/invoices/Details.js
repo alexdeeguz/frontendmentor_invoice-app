@@ -2,12 +2,13 @@ import BackButton from "./partials/BackButton";
 import Status from "./partials/Status";
 import Button from "./partials/Button";
 import useWindowSize from "../../hooks/useWindowSize";
-
+import Drawer from "./partials/Drawer";
+import Modal from "./Modal"
 const Details = () => {
   const width = useWindowSize().width;
   const invoiceTemplate = () => {
     return width >= 768 ? (
-      <>
+    //   <div className="template-container">
         <div className="invoice__details section">
           <div className="details">
             <div>
@@ -43,7 +44,7 @@ const Details = () => {
             </div>
           </div>
         </div>
-      </>
+    //   </div>
     ) : (
       <>
         <div className="flex justify-between invoice__details section">
@@ -81,8 +82,10 @@ const Details = () => {
     );
   };
   return (
-    <div>
-      <BackButton style={{ marginLeft: "24px", marginTop: "32px" }} />
+    <div className="details-main-container">
+      {/* <Modal /> */}
+      <Drawer formType="edit" />
+      <BackButton style={{ marginLeft: "24px", paddingTop: "32px" }} />
       <Status width={width} />
 
       <div className="card details-container">
@@ -116,11 +119,13 @@ const Details = () => {
         </div>
       </div>
 
-      {width < 768 && <div className="action-buttons">
-        <Button title="Edit" backgroundColor="#F9FAFE" color="#7E88C3" />
-        <Button title="Delete" backgroundColor="#EC5757" />
-        <Button title="Mark as Paid" />
-      </div>}
+      {width < 768 && (
+        <div className="action-buttons">
+          <Button title="Edit" backgroundColor="#F9FAFE" color="#7E88C3" />
+          <Button title="Delete" backgroundColor="#EC5757" />
+          <Button title="Mark as Paid" />
+        </div>
+      )}
     </div>
   );
 };

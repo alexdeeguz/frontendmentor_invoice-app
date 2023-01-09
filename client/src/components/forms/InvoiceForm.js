@@ -1,3 +1,4 @@
+import Modal from "../invoices/Modal";
 import BackButton from "../invoices/partials/BackButton";
 import Button from "../invoices/partials/Button";
 
@@ -23,7 +24,7 @@ const InvoiceForm = ({ formType }) => {
     );
   };
   return (
-    <form className="invoice-form">
+    <form className="invoice-form" id="invoice-form">
       <div>
         <BackButton />
         <h1>{title}</h1>
@@ -149,7 +150,7 @@ const InvoiceForm = ({ formType }) => {
           />
         </div>
       </div>
-      <div className="fill"></div>
+      {/* <div className="fill"></div> */}
       {/* <div className="action-buttons--edit"> */}
     {buttonActions()}
       {/* </div> */}

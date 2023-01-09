@@ -166,6 +166,7 @@
   width: 100%;
   margin: auto;
   text-align: center;
+  z-index: 0;
 }
 
 .tag--success {
@@ -187,6 +188,7 @@
   mix-blend-mode: normal;
   opacity: 0.06;
   border-radius: 6px;
+  z-index: 0;
 }
 
 .tag__overlay--pending {
@@ -217,7 +219,6 @@
   font-size: 20px;
   line-height: 22px;
   letter-spacing: -0.625px;
-
   color: #0c0e16;
   margin: 25px 70px;
 }
@@ -243,10 +244,7 @@
   font-weight: 700;
   font-size: 15px;
   line-height: 20px;
-  /* identical to box height, or 133% */
-
   letter-spacing: -0.3125px;
-
   color: #0c0e16;
 }
 
@@ -254,10 +252,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 18px;
-  /* or 164% */
-
   letter-spacing: -0.229167px;
-
   color: #7e88c3;
   display: flex;
   justify-content: flex-start;
@@ -284,10 +279,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
-
   color: #0c0e16;
 }
 
@@ -295,10 +287,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
-
   color: #7e88c3;
 }
 
@@ -306,11 +295,8 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   text-align: right;
   letter-spacing: -0.25px;
-
   color: #0c0e16;
 }
 
@@ -327,10 +313,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 18px;
-  /* identical to box height, or 164% */
-
   letter-spacing: -0.229167px;
-
   color: #ffffff;
 }
 
@@ -338,11 +321,8 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
-  /* identical to box height, or 160% */
-
   text-align: right;
   letter-spacing: -0.416667px;
-
   color: #ffffff;
 }
 
@@ -351,14 +331,12 @@
 .invoice-form > div:first-child {
   padding: 0px 24px 0px 24px;
   background-color: white;
-  /* position: absolute; */
   width: 100%;
   padding-top: 32px;
   padding-bottom: 24px;
 }
 
 .invoice-form > div:last-child {
-  /* border: 1px solid red; */
   padding: 24px;
   display: flex;
   justify-content: flex-end;
@@ -369,10 +347,7 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  /* identical to box height, or 133% */
-
   letter-spacing: -0.5px;
-
   color: #0c0e16;
   margin-bottom: 24px;
 }
@@ -382,10 +357,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 32px;
-  /* identical to box height, or 178% */
-
   letter-spacing: -0.375px;
-
   color: #777f98;
 }
 
@@ -393,10 +365,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
-
   color: #7c5dfa;
   margin-bottom: 24px;
 }
@@ -418,7 +387,6 @@ input[type="number"] {
   box-sizing: border-box;
   border: 1px solid #dfe3fa;
   border-radius: 4px;
-  /* margin-right: 12px; */
 }
 
 label,
@@ -426,10 +394,7 @@ input {
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
-
   color: #7e88c3;
   display: block;
 }
@@ -438,8 +403,18 @@ input {
   object-fit: contain;
 }
 
+.drawer {
+  display: none;
+}
+
 /* TABLET */
 @media screen and (min-width: 768px) {
+
+  .invoice-form {
+      transform: translateX(-100%);
+      transition: transform 0.5s ease-out;
+      display: none;
+  }
   .invoice__item {
     display: flex;
     justify-content: space-between;
@@ -455,11 +430,7 @@ input {
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height, or 150% */
-
-    /* text-align: right; */
     letter-spacing: -0.8px;
-
     color: #0c0e16;
   }
 
@@ -477,6 +448,10 @@ input {
     margin-left: 10px;
   }
 
+  .details-main-container {
+    position: relative;
+  }
+
   .details-container__first {
     display: flex;
     justify-content: space-between;
@@ -486,14 +461,12 @@ input {
     display: flex;
     justify-content: space-between;
     margin-top: 32px;
-    /* border: 1px solid red; */
   }
 
   .details > div {
     display: flex;
     flex-direction: column;
     flex: 1;
-        /* border: 1px solid red; */
   }
 
   .section {
@@ -501,7 +474,6 @@ input {
   }
 
   .details > div:first-child > div {
-    /* border: 1px solid red; */
     margin-bottom: 32px;
     justify-content: space-between;
   }
@@ -512,5 +484,12 @@ input {
 
   .details > div:first-child + div {
     align-items: center;
+  }
+
+  .drawer-container {
+    position: absolute;
+        top: 0;
+          left: 0;
+          z-index: 3;
   }
 }
