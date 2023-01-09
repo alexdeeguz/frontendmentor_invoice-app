@@ -3,9 +3,7 @@ import BackButton from "./partials/BackButton"
 
 const EditInvoice = () => {
     return (
-        <div>
-            <InvoiceForm />
-        </div>
+            <InvoiceForm formType="edit"/>
     )
 }
 

@@ -1,12 +1,32 @@
 import BackButton from "../invoices/partials/BackButton";
 import Button from "../invoices/partials/Button";
 
-const InvoiceForm = () => {
+const InvoiceForm = ({ formType }) => {
+  const title = formType === "edit" ? "Edit #XM9141" : "New Invoice";
+
+  const buttonActions = () => {
+    return formType === "edit" ? (
+      <div>
+        <Button title="Cancel" backgroundColor="#F9FAFE" color="#7E88C3" />
+        <Button title="Save Changes" />
+      </div>
+    ) : (
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <Button title="Discard" backgroundColor="#F9FAFE" color="#7E88C3" />
+        <Button
+          title="Save as Draft"
+          backgroundColor="#373B53"
+          color="#888EB0"
+        />
+        <Button title="Save & Send" />
+      </div>
+    );
+  };
   return (
     <form className="invoice-form">
       <div>
         <BackButton />
-        <h1>Edit #XM9141</h1>
+        <h1>{title}</h1>
 
         <div>
           <h3>Bill From</h3>
@@ -131,10 +151,7 @@ const InvoiceForm = () => {
       </div>
       <div className="fill"></div>
       {/* <div className="action-buttons--edit"> */}
-      <div>
-        <Button title="Cancel" backgroundColor="#F9FAFE" color="#7E88C3" />
-        <Button title="Save Changes" />
-      </div>
+    {buttonActions()}
       {/* </div> */}
     </form>
   );
