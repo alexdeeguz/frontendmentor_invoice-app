@@ -1,0 +1,66 @@
+.back-btn {
+  display: flex;
+  margin-left: 24px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn img {
+  object-fit: contain;
+  margin-right: 24px;
+}
+
+.back-btn p {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #0c0e16;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 50px 1px rgba(0, 0, 0, 0.1);
+  margin: 24px;
+}
+
+/* STATUS */
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-container > .section {
+  margin-bottom: 12px;
+}
+
+/* ACTION BUTTONS */
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  padding: 21px 24px;
+}
+
+.action-buttons button {
+  padding: 17px 24px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  text-align: center;
+  letter-spacing: -0.25px;
+  border-radius: 24px;
+  color: #ffffff;
+  border: none;
+}

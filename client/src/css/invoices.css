@@ -1,7 +1,6 @@
 /* INVOICES HEADER */
 
 .invoices__header {
-  /* margin: 32px 24px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +27,6 @@
 }
 
 .filter {
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
 }
@@ -38,11 +36,8 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   text-align: right;
   letter-spacing: -0.25px;
-
   color: #0c0e16;
 }
 
@@ -94,6 +89,17 @@
   box-shadow: 1px 1px 50px 1px rgba(0, 0, 0, 0.1);
 }
 
+.invoice__item--gray {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+
+  color: #7e88c3;
+}
+
 .invoice__item div {
   display: flex;
   justify-content: space-between;
@@ -103,10 +109,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
-
   color: #0c0e16;
 }
 
@@ -114,11 +117,8 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   text-align: right;
   letter-spacing: -0.25px;
-
   color: #858bb2;
 }
 
@@ -136,10 +136,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
-
   color: #888eb0;
 }
 
@@ -147,10 +144,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height, or 150% */
-
   letter-spacing: -0.8px;
-
   color: #0c0e16;
 }
 
@@ -160,10 +154,11 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height, or 125% */
-
   letter-spacing: -0.25px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tag li {
@@ -231,12 +226,122 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  /* or 125% */
-
   text-align: center;
   letter-spacing: -0.25px;
-
   color: #888eb0;
   margin-left: 70px;
   margin-right: 70px;
+}
+
+/* DETAILS */
+
+.details-container > div > div > div > .title {
+  margin-bottom: 12px;
+}
+
+.details-container .bold {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  /* identical to box height, or 133% */
+
+  letter-spacing: -0.3125px;
+
+  color: #0c0e16;
+}
+
+.address > p {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  /* or 164% */
+
+  letter-spacing: -0.229167px;
+
+  color: #7e88c3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.invoice__details > div > div {
+  margin-top: 12px;
+}
+
+.price-container {
+  background: #f9fafe;
+  border-radius: 8px 8px 0px 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.price-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price__item {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+
+  color: #0c0e16;
+}
+
+.price__quantity {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+
+  color: #7e88c3;
+}
+
+.price__total {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  text-align: right;
+  letter-spacing: -0.25px;
+
+  color: #0c0e16;
+}
+
+.grand-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background: #373b53;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.grand-total__title {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  /* identical to box height, or 164% */
+
+  letter-spacing: -0.229167px;
+
+  color: #ffffff;
+}
+
+.grand-total__price {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  text-align: right;
+  letter-spacing: -0.416667px;
+
+  color: #ffffff;
 }

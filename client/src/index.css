@@ -72,3 +72,11 @@ h6 {
 .container {
   margin: 32px 24px;
 }
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}

@@ -1,9 +1,9 @@
-import InvoiceListItem from "./InvoicesListItem";
+import InvoiceListItem from "./partials/InvoicesListItem";
 
 const InvoicesList = () => {
-  return <div>
+  return <>
     <InvoiceListItem />
-  </div>;
+  </>;
 };
 
 export default InvoicesList;
