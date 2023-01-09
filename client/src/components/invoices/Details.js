@@ -1,25 +1,51 @@
 import BackButton from "./partials/BackButton";
 import Status from "./partials/Status";
 import Button from "./partials/Button";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const Details = () => {
-  return (
-    <div>
-      <BackButton style={{marginLeft: "24px", marginTop: "32px"}} />
-      <Status />
+  const width = useWindowSize().width;
+  const invoiceTemplate = () => {
+    return width >= 768 ? (
+      <>
+        <div className="invoice__details section">
+          <div className="details">
+            <div>
+              <div className="flex">
+                <div>
+                  <p className="invoice__item--gray title">Invoice Date</p>
+                  <p className="bold">21 Aug 2021</p>
+                </div>
 
-      <div className="card details-container">
-        <div className="section">
-          <p className="invoice__item--id">#XM9141</p>
-          <p className="invoice__item--gray">Graphic Design</p>
+                <div>
+                  <p className="invoice__item--gray title">Bill To</p>
+                  <p className="bold">Alex Grim</p>
+                </div>
+              </div>
+
+              <div className="flex">
+                <div>
+                  <p className="invoice__item--gray title">Payment Due</p>
+                  <p className="bold">20 Sep 2021</p>
+                </div>
+                <div className="address">
+                  <p className="invoice__item--gray">10111 Something Ave</p>
+                  <p className="invoice__item--gray">Los Angeles, CA 91343</p>
+                  <p className="invoice__item--gray">United States</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="section">
+                <p className="invoice__item--gray">Sent to</p>
+                <p className="bold">alexgrim@mail.com</p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="address section">
-          <p className="invoice__item--gray">10111 Something Ave</p>
-          <p className="invoice__item--gray">Los Angeles, CA 91343</p>
-          <p className="invoice__item--gray">United States</p>
-        </div>
-
+      </>
+    ) : (
+      <>
         <div className="flex justify-between invoice__details section">
           <div>
             <div>
@@ -51,6 +77,29 @@ const Details = () => {
           <p className="invoice__item--gray">Sent to</p>
           <p className="bold">alexgrim@mail.com</p>
         </div>
+      </>
+    );
+  };
+  return (
+    <div>
+      <BackButton style={{ marginLeft: "24px", marginTop: "32px" }} />
+      <Status width={width} />
+
+      <div className="card details-container">
+        <div className="details-container__first">
+          <div className="section">
+            <p className="invoice__item--id">#XM9141</p>
+            <p className="invoice__item--gray">Graphic Design</p>
+          </div>
+
+          <div className="address section">
+            <p className="invoice__item--gray">10111 Something Ave</p>
+            <p className="invoice__item--gray">Los Angeles, CA 91343</p>
+            <p className="invoice__item--gray">United States</p>
+          </div>
+        </div>
+
+        {invoiceTemplate()}
 
         <div className="price-container">
           <div className="price-details">
@@ -67,11 +116,11 @@ const Details = () => {
         </div>
       </div>
 
-      <div className="action-buttons">
+      {width < 768 && <div className="action-buttons">
         <Button title="Edit" backgroundColor="#F9FAFE" color="#7E88C3" />
         <Button title="Delete" backgroundColor="#EC5757" />
         <Button title="Mark as Paid" />
-      </div>
+      </div>}
     </div>
   );
 };

@@ -8,8 +8,8 @@ const Invoices = () => {
     <>
       <InvoicesHeader />
 
-      <InvoiceListItem />
-      {/* <MissingData /> */}
+      {/* <InvoiceListItem /> */}
+      <MissingData />
     </>
   );
 };

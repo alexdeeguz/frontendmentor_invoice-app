@@ -437,3 +437,80 @@ input {
 .invoice-form img {
   object-fit: contain;
 }
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .invoice__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .invoice__status--date {
+    margin-bottom: 0;
+  }
+
+  .invoice__item--id,
+  .invoice__status--price {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    /* text-align: right; */
+    letter-spacing: -0.8px;
+
+    color: #0c0e16;
+  }
+
+  .status > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .status > div > p {
+    margin-right: 15px;
+  }
+
+  .action-buttons button {
+    margin-left: 10px;
+  }
+
+  .details-container__first {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    /* border: 1px solid red; */
+  }
+
+  .details > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+        /* border: 1px solid red; */
+  }
+
+  .section {
+    margin: 0;
+  }
+
+  .details > div:first-child > div {
+    /* border: 1px solid red; */
+    margin-bottom: 32px;
+    justify-content: space-between;
+  }
+
+  .details > div:first-child > div > div {
+    flex: 1
+  }
+
+  .details > div:first-child + div {
+    align-items: center;
+  }
+}
