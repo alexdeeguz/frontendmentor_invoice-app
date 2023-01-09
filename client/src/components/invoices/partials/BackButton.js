@@ -1,6 +1,6 @@
-const BackButton = () => {
+const BackButton = ({ style }) => {
     return (
-        <div className="back-btn">
+        <div style={{...style}} className="back-btn">
             <img src="/assets/icon-arrow-left.svg" />
             <p>Go back</p>
         </div>

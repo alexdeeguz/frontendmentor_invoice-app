@@ -4,8 +4,8 @@ import Button from "./partials/Button";
 
 const Details = () => {
   return (
-    <>
-      <BackButton />
+    <div>
+      <BackButton style={{marginLeft: "24px", marginTop: "32px"}} />
       <Status />
 
       <div className="card details-container">
@@ -72,7 +72,7 @@ const Details = () => {
         <Button title="Delete" backgroundColor="#EC5757" />
         <Button title="Mark as Paid" />
       </div>
-    </>
+    </div>
   );
 };
 
