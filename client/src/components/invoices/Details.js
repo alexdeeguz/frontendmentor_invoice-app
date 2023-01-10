@@ -120,7 +120,7 @@ const Details = () => {
       </div>
 
       {width < 768 && (
-        <div className="action-buttons">
+        <div className="action-buttons action-buttons--mobile">
           <Button title="Edit" backgroundColor="#F9FAFE" color="#7E88C3" />
           <Button title="Delete" backgroundColor="#EC5757" />
           <Button title="Mark as Paid" />

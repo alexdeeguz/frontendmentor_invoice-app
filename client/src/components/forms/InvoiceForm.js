@@ -7,7 +7,7 @@ const InvoiceForm = ({ formType }) => {
 
   const buttonActions = () => {
     return formType === "edit" ? (
-      <div>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <Button title="Cancel" backgroundColor="#F9FAFE" color="#7E88C3" />
         <Button title="Save Changes" />
       </div>
@@ -23,6 +23,8 @@ const InvoiceForm = ({ formType }) => {
       </div>
     );
   };
+
+
   return (
     <form className="invoice-form" id="invoice-form">
       <div>
@@ -152,7 +154,7 @@ const InvoiceForm = ({ formType }) => {
       </div>
       {/* <div className="fill"></div> */}
       {/* <div className="action-buttons--edit"> */}
-    {buttonActions()}
+        {buttonActions()}
       {/* </div> */}
     </form>
   );

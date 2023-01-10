@@ -24,6 +24,7 @@ body {
 font-family: 'Spartan', sans-serif;
   font-style: normal;
   background: rgba(248, 248, 251, 1);
+  scroll-behavior: ;
 }
 
 /*
@@ -70,7 +71,7 @@ h6 {
 }
 
 .container {
-  margin: 32px 24px;
+  /* margin: 32px 24px; */
 }
 
 .flex {
