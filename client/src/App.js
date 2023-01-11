@@ -1,21 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Details from "./components/invoices/Details";
-import EditInvoice from "./components/invoices/EditInvoice";
-import NewInvoice from "./components/invoices/NewInvoice";
-import Invoices from "./components/invoices/Invoices";
-import Nav from "./components/nav/Nav";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/invoices" element={<Invoices />} />
-        <Route path="/invoices/:id" element={<Details />} />
-        <Route path="/invoices/:id/:action" element={<EditInvoice />} />
-        <Route path="/invoices/new" element={<NewInvoice />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
