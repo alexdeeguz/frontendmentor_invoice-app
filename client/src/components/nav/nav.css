@@ -1,0 +1,58 @@
+nav {
+  background-color: rgba(55, 59, 83, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+    width: 72px;
+    height: 72px;
+    background-color: rgba(124, 93, 250, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 0px 20px 20px 0px;
+}
+
+nav .logo__bottom {
+    background-color: rgba(146, 119, 255, 1);
+    width: 100%;
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    border-radius: 20px 0px 20px 0px;
+}
+
+nav img {
+    z-index: 1;
+}
+
+.nav__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.nav__right > img:last-child {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+
+.nav__divider {
+    width: 1px;
+    height: 72px;
+    background: #494E6E;
+}
+
+.nav__right > img:first-child {
+    width: 20px;
+    height: 20px;
+}
+
+.nav__right img {
+    margin: 20px 24px;
+}
