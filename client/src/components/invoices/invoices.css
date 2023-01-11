@@ -143,7 +143,14 @@
   color: #33d69f;
 }
 
+.invoice__card img {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
+  .container {
+    padding: 56px 48px;
+  }
   .invoice__card {
     display: flex;
     justify-content: space-between;
@@ -152,5 +159,31 @@
 
   .invoice__card--item5 {
     padding: 13px 30px;
+  }
+
+  .invoice__card img {
+    display: block;
+    float: right;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .invoices {
+    padding: 72px 252px;
+    min-width: 730px;
+    flex: 1;
+  }
+
+  .invoices__header--left h1 {
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -1px;
+  }
+
+  .invoices__header--left p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
   }
 }

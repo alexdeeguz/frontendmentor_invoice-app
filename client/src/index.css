@@ -69,3 +69,9 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+@media screen and (min-width: 1440px) {
+  .app {
+    display: flex;
+  }
+}
