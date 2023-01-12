@@ -187,28 +187,32 @@
 
 /* DRAWER */
 .drawer {
-    /* border: 1px solid red; */
-    display: none;
-    position: relative;
+  /* border: 1px solid red; */
+  display: none;
+  position: relative;
 }
 
 .drawer > .action-buttons {
-    position: sticky;
-    width: 100%;
-    bottom: 0;
-    padding: 31px 56px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: flex-end;
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+  padding: 31px 56px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawer > .action-buttons--new {
+justify-content: space-between;
 }
 
 #overlay {
-    width: 100vw;
-    height: calc(100vh - 72px);
-    background-color: rgba(0,0,0,.7);
-    position: absolute;
-    z-index: 1;
-    display: none;
+  width: 100vw;
+  height: calc(100vh - 72px);
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 1;
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -258,19 +262,19 @@
 
   .drawer {
     display: block;
-        position: absolute;
-            z-index: 2;
-            transform: translateX(-150%);
-            transition: transform ease-out 0.5s;
-            border-radius: 0px 20px 20px 0px;
-            overflow: scroll;
-            height: calc(100vh - 72px);
+    position: absolute;
+    z-index: 2;
+    transform: translateX(-150%);
+    transition: transform ease-out 0.5s;
+    border-radius: 0px 20px 20px 0px;
+    overflow: scroll;
+    height: calc(100vh - 72px);
   }
 }
 
 @media screen and (min-width: 1440px) {
-    .drawer, #overlay {
-        height: 100vh;
-    }
+  .drawer,
+  #overlay {
+    height: 100vh;
+  }
 }
-

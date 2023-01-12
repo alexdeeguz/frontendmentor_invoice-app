@@ -1,6 +1,6 @@
 import "./forms.css";
 
-const EditForm = () => {
+const NewForm = () => {
   return (
     <div className="form-container">
       <div className="back-btn">
@@ -9,7 +9,7 @@ const EditForm = () => {
       </div>
 
       <div className="form">
-        <h1>Edit #XM9141</h1>
+        <h1>New Invoice</h1>
         <h3>Bill From</h3>
         <div className="form__bill-from">
           <label className="form__item-1">
@@ -92,20 +92,18 @@ const EditForm = () => {
             <input type="text" placeholder="Test" />
           </label>
           <label className="form__item-5">
-          <img
-            src="/assets/icon-delete.svg"
-            img="delete"
-          />
+            <img src="/assets/icon-delete.svg" img="delete" />
           </label>
         </div>
         <button className="btn">+Add New Item</button>
       </div>
       <div className="action-buttons">
-        <button className="btn">Cancel</button>
-        <button className="btn">Save Changes</button>
+        <button className="btn">Discard</button>
+        <button className="btn">Save as Draft</button>
+        <button className="btn">Save & Send</button>
       </div>
     </div>
   );
 };
 
-export default EditForm;
+export default NewForm;
