@@ -74,4 +74,8 @@ h6 {
   .app {
     display: flex;
   }
+
+  .app > div {
+    flex: 1
+  }
 }

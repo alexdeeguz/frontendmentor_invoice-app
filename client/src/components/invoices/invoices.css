@@ -1,9 +1,13 @@
-.container {
-  padding: 32px 24px;
+.card {
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 24px;
 }
 
 .invoices {
   color: #0c0e16;
+  padding: 32px 24px;
 }
 
 .invoices__header {
@@ -31,7 +35,7 @@
   display: flex;
 }
 
-.filter__button {
+.invoices .filter__button {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,12 +48,12 @@
   letter-spacing: -0.25px;
 }
 
-.filter__button img {
+.invoices .filter__button img {
   object-fit: contain;
   margin-left: 12px;
 }
 
-.new__button {
+.invoices .new__button {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,7 +70,7 @@
   letter-spacing: -0.25px;
 }
 
-.new__button img {
+.invoices .new__button img {
   background-color: white;
   border-radius: 100%;
   padding: 11px;
@@ -128,7 +132,12 @@
   position: relative;
 }
 
-.invoice__card--item5-bg {
+.invoices .tag li {
+  list-style-position: inside;
+  color: #33d69f;
+}
+
+.invoices .tag__bg {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -138,10 +147,20 @@
   border-radius: 6px;
 }
 
-.invoice__card--item5 li {
+/* .invoice__card--item5-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #33d69f;
+  mix-blend-mode: normal;
+  opacity: 0.06;
+  border-radius: 6px;
+} */
+
+/* .invoice__card--item5 li {
   list-style-position: inside;
   color: #33d69f;
-}
+} */
 
 .invoice__card img {
   display: none;
@@ -168,10 +187,12 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .invoices {
-    padding: 72px 252px;
-    min-width: 730px;
-    flex: 1;
+  .invoices, .details {
+    /* padding: 72px 252px; */
+    margin: 72px 252px;
+    /* width: 100%; */
+    /* min-width: 750px; */
+    /* flex: 1; */
   }
 
   .invoices__header--left h1 {
