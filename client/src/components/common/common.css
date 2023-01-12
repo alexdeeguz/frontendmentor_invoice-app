@@ -18,3 +18,31 @@ button {
     background-color: #373B53 !important;
     color: #DFE3FA !important;
 }
+
+.form-container .back-btn {
+    padding-top: 32px;
+    padding-left: 24px;
+    background-color: #ffffff;
+}
+
+.back-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+cursor: pointer;
+    /* TEXT */
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+}
+
+.back-btn>img {
+    margin-right: 24px;
+}
+
+@media screen and (min-width: 768px) {
+    .form-container .back-btn {
+        display: none;
+        }
+}

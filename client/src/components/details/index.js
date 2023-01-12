@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import BackButton from "../common/BackButton";
 import Button from "../common/Button";
 import "./details.css";
 import Drawer from "./drawer/Drawer";
@@ -5,27 +7,31 @@ import Overlay from "./drawer/Overlay";
 import DeleteModal from "./modal/DeleteModal";
 
 const Details = () => {
-    const handleClickEdit = (e) => {
-        // e.preventDefault();
-        document.getElementById("drawer").style.transform = "translateX(0)";
-        document.getElementById("overlay").style.display = "block"
-    }
+  const navigate = useNavigate()
 
-    const handleClickDelete = () => {
-        // document.getElementById("action-buttons-mobile").style.display = "none";
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
+  const handleClickEdit = (e) => {
+    e.preventDefault();
+    if (e.target.className.includes("mobile")) {
+      navigate("/invoices/1/edit")
+    } else {
+      document.getElementById("drawer").style.transform = "translateX(0)";
+      document.getElementById("overlay").style.display = "block";
     }
+  };
+
+  const handleClickDelete = () => {
+    // document.getElementById("action-buttons-mobile").style.display = "none";
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("overlay--delete").style.display = "block";
+  };
   return (
     <div>
       <DeleteModal />
       <Overlay />
       <Drawer />
       <div className="details">
-        <div className="back-btn">
-          <img src="/assets/icon-arrow-left.svg" alt="left arrow" />
-          <p>Go back</p>
-        </div>
+        <BackButton />
 
         <div className="card details__actions">
           <div className="details__status">
@@ -37,8 +43,12 @@ const Details = () => {
           </div>
 
           <div className="details__action-buttons">
-            <Button onClick={handleClickEdit} className="secondary">Edit</Button>
-            <Button onClick={handleClickDelete} className="danger">Delete</Button>
+            <Button onClick={handleClickEdit} className="secondary">
+              Edit
+            </Button>
+            <Button onClick={handleClickDelete} className="danger">
+              Delete
+            </Button>
             <Button className="primary">Mark as Paid</Button>
           </div>
         </div>
@@ -139,8 +149,12 @@ const Details = () => {
         id="action-buttons-mobile"
         className="details__action-buttons--mobile"
       >
-        <Button className="secondary">Edit</Button>
-        <Button className="danger" onClick={handleClickDelete}>Delete</Button>
+        <Button className="secondary mobile" onClick={handleClickEdit}>
+          Edit
+        </Button>
+        <Button className="danger" onClick={handleClickDelete}>
+          Delete
+        </Button>
         <Button className="primary">Mark as Paid</Button>
       </div>
     </div>

@@ -1,13 +1,11 @@
+import BackButton from "../common/BackButton";
 import Button from "../common/Button";
 import "./forms.css";
 
 const NewForm = () => {
   return (
     <div className="form-container desktop">
-      <div className="back-btn">
-        <img src="/assets/icon-arrow-left.svg" alt="left arrow" />
-        <p>Go back</p>
-      </div>
+      <BackButton />
 
       <div className="form">
         <h1>New Invoice</h1>
