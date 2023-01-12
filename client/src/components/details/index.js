@@ -1,15 +1,24 @@
 import "./details.css";
+import Drawer from "./drawer/Drawer";
+import Overlay from "./drawer/Overlay";
 
 const Details = () => {
+    const handleClickEdit = (e) => {
+        // e.preventDefault();
+        document.getElementById("drawer").style.transform = "translateX(0)";
+        document.getElementById("overlay").style.display = "block"
+    }
   return (
     <div>
+      <Overlay />
+      <Drawer />
       <div className="details">
         <div className="back-btn">
           <img src="/assets/icon-arrow-left.svg" alt="left arrow" />
           <p>Go back</p>
         </div>
 
-        <div className=" card details__actions">
+        <div className="card details__actions">
           <div className="details__status">
             <p>Status</p>
             <ul className="tag">
@@ -19,7 +28,7 @@ const Details = () => {
           </div>
 
           <div className="details__action-buttons">
-            <button>Edit</button>
+            <button onClick={handleClickEdit}>Edit</button>
             <button>Delete</button>
             <button>Mark as Paid</button>
           </div>

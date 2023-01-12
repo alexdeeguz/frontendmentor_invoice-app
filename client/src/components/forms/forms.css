@@ -1,0 +1,219 @@
+.form {
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+.form-container .back-btn {
+  padding-top: 32px;
+  padding-left: 24px;
+  background-color: #ffffff;
+}
+
+.form h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+  color: #0c0e16;
+  margin-bottom: 24px;
+}
+
+.form h2 {
+  margin-top: 66px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: -0.375px;
+  color: #777f98;
+}
+
+.form h3 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7c5dfa;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 17px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+input[type="number"] {
+  width: 90%;
+  padding: 17px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #dfe3fa;
+  border-radius: 4px;
+}
+
+label,
+input {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+  display: block;
+}
+
+.form img {
+  object-fit: contain;
+}
+
+/* BILL FROM */
+.form__bill-from {
+  display: grid;
+  gap: 23px;
+  grid-template-areas:
+    "address adress"
+    "city zip"
+    "country country";
+}
+
+.form__bill-from .form__item-1 {
+  grid-area: address;
+}
+
+.form__bill-from .form__item-2 {
+  grid-area: city;
+}
+
+.form__bill-from .form__item-3 {
+  grid-area: zip;
+}
+
+.form__bill-from .form__item-4 {
+  grid-area: country;
+}
+
+/* BILL TO */
+.form__bill-to {
+  display: grid;
+  gap: 23px;
+  grid-template-areas:
+    "name name"
+    "email email"
+    "address address"
+    "city zip"
+    "country country"
+    "date date"
+    "terms terms"
+    "desc desc";
+}
+
+.form__bill-to .form__item-1 {
+  grid-area: name;
+}
+
+.form__bill-to .form__item-2 {
+  grid-area: email;
+}
+.form__bill-to .form__item-3 {
+  grid-area: address;
+}
+.form__bill-to .form__item-4 {
+  grid-area: city;
+}
+.form__bill-to .form__item-5 {
+  grid-area: zip;
+}
+.form__bill-to .form__item-6 {
+  grid-area: country;
+}
+.form__bill-to .form__item-7 {
+  grid-area: date;
+}
+.form__bill-to .form__item-8 {
+  grid-area: terms;
+}
+.form__bill-to .form__item-9 {
+  grid-area: desc;
+}
+
+/* ITEM LIST */
+
+.form__item-list {
+    display: grid;
+    gap: 16px;
+    grid-template-areas: 
+        "name name name name"
+        "qty price total trash"
+    ;
+}
+
+.form__item-list .form__item-1 {
+    grid-area: name;
+}
+
+.form__item-list .form__item-2 {
+    grid-area: qty;
+}
+
+.form__item-list .form__item-3 {
+    grid-area: price;
+}
+
+.form__item-list .form__item-4 {
+    grid-area: total;
+}
+
+.form__item-list .form__item-4 input {
+    border: none;
+}
+
+.form__item-list .form__item-5 {
+    grid-area: trash;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BUTTONS */
+
+.form-container .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #ffffff;
+    padding: 24px 24px;
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+}
+
+.form button {
+    width: 100%;
+    margin-top: 48px;
+}
+
+@media screen and (min-width: 768px) {
+    .form-container .action-buttons {
+        display: none;
+    }
+    .form__bill-from {
+        grid-template-areas: 
+            "address address address"
+            "city zip country"
+        ;
+    }
+
+    .form__bill-to {
+        grid-template-areas: 
+            "name name name name"
+            "email email email email"
+            "address address address address"
+            "city zip country country"
+            "date date terms terms"
+            "desc desc desc desc"
+        ;
+    }
+}
