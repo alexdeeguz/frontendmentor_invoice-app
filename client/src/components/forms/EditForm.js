@@ -1,3 +1,4 @@
+import Button from "../common/Button";
 import "./forms.css";
 
 const EditForm = () => {
@@ -98,11 +99,11 @@ const EditForm = () => {
           />
           </label>
         </div>
-        <button className="btn">+Add New Item</button>
+        <Button color="secondary">+Add New Item</Button>
       </div>
       <div className="action-buttons">
-        <button className="btn">Cancel</button>
-        <button className="btn">Save Changes</button>
+        <Button color="secondary">Cancel</Button>
+        <Button color="primary">Save Changes</Button>
       </div>
     </div>
   );

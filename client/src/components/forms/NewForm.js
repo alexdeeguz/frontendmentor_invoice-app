@@ -1,3 +1,4 @@
+import Button from "../common/Button";
 import "./forms.css";
 
 const NewForm = () => {
@@ -95,12 +96,12 @@ const NewForm = () => {
             <img src="/assets/icon-delete.svg" img="delete" />
           </label>
         </div>
-        <button className="btn">+Add New Item</button>
+        <Button color="secondary">+Add New Item</Button>
       </div>
       <div className="action-buttons">
-        <button className="btn">Discard</button>
-        <button className="btn">Save as Draft</button>
-        <button className="btn">Save & Send</button>
+        <Button color="secondary">Discard</Button>
+        <Button color="dark">Save as Draft</Button>
+        <Button color="primary">Save & Send</Button>
       </div>
     </div>
   );

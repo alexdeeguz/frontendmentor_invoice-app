@@ -1,3 +1,4 @@
+import Button from "../../common/Button";
 import EditForm from "../../forms/EditForm";
 import NewForm from "../../forms/NewForm";
 
@@ -7,18 +8,18 @@ const Drawer = () => {
       {/* EDIT INVOICE */}
       {/* <EditForm />
       <div className="action-buttons">
-        <button className="btn">Cancel</button>
-        <button className="btn">Save Changes</button>
+        <Button color="secondary">Cancel</Button>
+        <Button color="primary">Save Changes</Button>
       </div> */}
 
 
     {/* NEW INVOICE */}
     <NewForm />
       <div className="action-buttons action-buttons--new">
-        <button className="btn">Discard</button>
+        <Button color="secondary">Discard</Button>
         <div>
-          <button className="btn">Save as Draft</button>
-          <button className="btn">Save & Send</button>
+          <Button color="dark">Save as Draft</Button>
+          <Button color="primary">Save & Send</Button>
         </div>
       </div>
     </div>

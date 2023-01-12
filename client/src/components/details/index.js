@@ -1,3 +1,4 @@
+import Button from "../common/Button";
 import "./details.css";
 import Drawer from "./drawer/Drawer";
 import Overlay from "./drawer/Overlay";
@@ -10,7 +11,7 @@ const Details = () => {
         document.getElementById("overlay").style.display = "block"
     }
 
-    const handleDelete = () => {
+    const handleClickDelete = () => {
         // document.getElementById("action-buttons-mobile").style.display = "none";
         document.getElementById("modal").style.display = "block";
         document.getElementById("overlay").style.display = "block";
@@ -36,9 +37,9 @@ const Details = () => {
           </div>
 
           <div className="details__action-buttons">
-            <button onClick={handleClickEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
-            <button>Mark as Paid</button>
+            <Button onClick={handleClickEdit} color="secondary">Edit</Button>
+            <Button onClick={handleClickDelete} color="danger">Delete</Button>
+            <Button color="primary">Mark as Paid</Button>
           </div>
         </div>
 
@@ -134,10 +135,13 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div id="action-buttons-mobile" className="details__action-buttons--mobile">
-        <button>Edit</button>
-        <button onClick={handleDelete}>Delete</button>
-        <button>Mark as Paid</button>
+      <div
+        id="action-buttons-mobile"
+        className="details__action-buttons--mobile"
+      >
+        <Button color="secondary">Edit</Button>
+        <Button color="danger" onClick={handleClickDelete}>Delete</Button>
+        <Button color="primary">Mark as Paid</Button>
       </div>
     </div>
   );

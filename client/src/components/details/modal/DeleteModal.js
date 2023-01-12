@@ -1,3 +1,5 @@
+import Button from "../../common/Button";
+
 const DeleteModal = () => {
   return (
     <div id="modal" className="modal">
@@ -7,8 +9,8 @@ const DeleteModal = () => {
         undone.
       </p>
       <div className="action-buttons">
-        <button className="btn">Cancel</button>
-        <button className="btn">Delete</button>
+        <Button color="secondary">Cancel</Button>
+        <Button color="danger">Delete</Button>
       </div>
     </div>
   );
