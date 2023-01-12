@@ -1,0 +1,20 @@
+button {
+    cursor: pointer;
+}
+
+.primary:hover {
+    background-color: #9277FF !important;
+}
+
+.secondary:hover {
+    background-color: #DFE3FA !important;
+}
+
+.danger:hover {
+    background-color: #FF9797 !important;
+}
+
+.dark:hover {
+    background-color: #373B53 !important;
+    color: #DFE3FA !important;
+}

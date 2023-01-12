@@ -9,8 +9,8 @@ const DeleteModal = () => {
         undone.
       </p>
       <div className="action-buttons">
-        <Button color="secondary">Cancel</Button>
-        <Button color="danger">Delete</Button>
+        <Button className="secondary">Cancel</Button>
+        <Button className="danger">Delete</Button>
       </div>
     </div>
   );

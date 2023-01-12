@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import "./nav.css";
 
 const Nav = () => {
+  const navigate = useNavigate()
+
+  const navigateHome = () => {
+    navigate('/')
+  }
   return (
     <nav>
-      <div className="logo">
+      <div className="logo" onClick={navigateHome}>
         <img src="/assets/logo.svg" alt="logo" />
         <div className="logo__bottom"></div>
       </div>

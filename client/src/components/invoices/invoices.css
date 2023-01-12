@@ -147,20 +147,11 @@
   border-radius: 6px;
 }
 
-/* .invoice__card--item5-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #33d69f;
-  mix-blend-mode: normal;
-  opacity: 0.06;
-  border-radius: 6px;
-} */
-
-/* .invoice__card--item5 li {
-  list-style-position: inside;
-  color: #33d69f;
-} */
+@media screen and (max-width: 767px) {
+  .invoices .new__button--desktop {
+    display: none;
+  }
+}
 
 .invoice__card img {
   display: none;
@@ -184,10 +175,15 @@
     display: block;
     float: right;
   }
+
+  .invoices .new__button--mobile {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-  .invoices, .details {
+  .invoices,
+  .details {
     /* padding: 72px 252px; */
     margin: 72px 252px;
     /* width: 100%; */

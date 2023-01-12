@@ -37,9 +37,9 @@ const Details = () => {
           </div>
 
           <div className="details__action-buttons">
-            <Button onClick={handleClickEdit} color="secondary">Edit</Button>
-            <Button onClick={handleClickDelete} color="danger">Delete</Button>
-            <Button color="primary">Mark as Paid</Button>
+            <Button onClick={handleClickEdit} className="secondary">Edit</Button>
+            <Button onClick={handleClickDelete} className="danger">Delete</Button>
+            <Button className="primary">Mark as Paid</Button>
           </div>
         </div>
 
@@ -139,9 +139,9 @@ const Details = () => {
         id="action-buttons-mobile"
         className="details__action-buttons--mobile"
       >
-        <Button color="secondary">Edit</Button>
-        <Button color="danger" onClick={handleClickDelete}>Delete</Button>
-        <Button color="primary">Mark as Paid</Button>
+        <Button className="secondary">Edit</Button>
+        <Button className="danger" onClick={handleClickDelete}>Delete</Button>
+        <Button className="primary">Mark as Paid</Button>
       </div>
     </div>
   );

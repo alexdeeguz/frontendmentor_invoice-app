@@ -1,3 +1,5 @@
+import "./common.css";
+
 const COLORS = {
   primary: {
     backgroundColor: "#7C5DFA",
@@ -18,19 +20,23 @@ const COLORS = {
 };
 
 const BUTTON_STYLES = {
-    padding: "17px 24px",
-    marginLeft: "8px",
-    borderRadius: "24px",
-    border: "none",
-    fontWeight: 700,
-    fontSize: "12px",
-    lineHeight: "15px",
-    textAlign: "center",
-    letterSpacing: "-0.25px"
-}
+  padding: "17px 24px",
+  marginLeft: "8px",
+  borderRadius: "24px",
+  border: "none",
+  fontWeight: 700,
+  fontSize: "12px",
+  lineHeight: "15px",
+  textAlign: "center",
+  letterSpacing: "-0.25px",
+};
 
-const Button = ({ children, color, onClick }) => {
-    return <button onClick={onClick} style={{ ...COLORS[color], ...BUTTON_STYLES }}>{children}</button>
-}
+const Button = ({ children, color, onClick, className, ...props }) => {
+  return (
+    <button {...props} className={className} onClick={onClick} style={{ ...COLORS[className], ...BUTTON_STYLES }}>
+      {children}
+    </button>
+  );
+};
 
-export default Button
+export default Button;

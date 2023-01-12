@@ -240,12 +240,6 @@
   justify-content: flex-end;
 }
 
-@media screen and (max-width: 767px) {
-  #overlay {
-    height: 100%;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .details__footer {
     display: inline-table;
@@ -299,6 +293,7 @@
     transition: transform ease-out 0.5s;
     border-radius: 0px 20px 20px 0px;
     overflow: scroll;
+    /* overflow-x: hidden; */
     height: calc(100vh - 72px);
   }
 }
@@ -307,5 +302,12 @@
   .drawer,
   #overlay {
     height: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+   #overlay {
+    border: 1px solid red;
+    display: none !important;
   }
 }

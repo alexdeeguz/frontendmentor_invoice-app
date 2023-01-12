@@ -8,18 +8,18 @@ const Drawer = () => {
       {/* EDIT INVOICE */}
       {/* <EditForm />
       <div className="action-buttons">
-        <Button color="secondary">Cancel</Button>
-        <Button color="primary">Save Changes</Button>
+        <Button className="secondary">Cancel</Button>
+        <Button className="primary">Save Changes</Button>
       </div> */}
 
 
     {/* NEW INVOICE */}
     <NewForm />
       <div className="action-buttons action-buttons--new">
-        <Button color="secondary">Discard</Button>
+        <Button className="secondary">Discard</Button>
         <div>
-          <Button color="dark">Save as Draft</Button>
-          <Button color="primary">Save & Send</Button>
+          <Button className="dark">Save as Draft</Button>
+          <Button className="primary">Save & Send</Button>
         </div>
       </div>
     </div>

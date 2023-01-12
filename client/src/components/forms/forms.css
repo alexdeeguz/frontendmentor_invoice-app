@@ -212,7 +212,7 @@ input {
             "email email email email"
             "address address address address"
             "city zip country country"
-            "date date terms terms"
+            "date terms terms terms"
             "desc desc desc desc"
         ;
     }
@@ -223,6 +223,10 @@ input {
     /* border: 1px solid red; */
     /* position: absolute; */
     height: 100vh;
-    overflow: scroll;
+    /* overflow: scroll; */
+  }
+
+  .desktop {
+    /* display: none; */
   }
 }

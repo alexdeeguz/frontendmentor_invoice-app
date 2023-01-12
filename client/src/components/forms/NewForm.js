@@ -3,7 +3,7 @@ import "./forms.css";
 
 const NewForm = () => {
   return (
-    <div className="form-container">
+    <div className="form-container desktop">
       <div className="back-btn">
         <img src="/assets/icon-arrow-left.svg" alt="left arrow" />
         <p>Go back</p>
@@ -96,12 +96,12 @@ const NewForm = () => {
             <img src="/assets/icon-delete.svg" img="delete" />
           </label>
         </div>
-        <Button color="secondary">+Add New Item</Button>
+        <Button className="secondary">+Add New Item</Button>
       </div>
       <div className="action-buttons">
-        <Button color="secondary">Discard</Button>
-        <Button color="dark">Save as Draft</Button>
-        <Button color="primary">Save & Send</Button>
+        <Button className="secondary">Discard</Button>
+        <Button className="dark">Save as Draft</Button>
+        <Button className="primary">Save & Send</Button>
       </div>
     </div>
   );
