@@ -203,16 +203,68 @@
 }
 
 .drawer > .action-buttons--new {
-justify-content: space-between;
+  justify-content: space-between;
 }
 
 #overlay {
   width: 100vw;
   height: calc(100vh - 72px);
-  background-color: rgba(0, 0, 0, 0.7);
+  /* height: 100%; */
+  background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   z-index: 1;
   display: none;
+}
+
+
+
+.modal {
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  padding: 48px;
+  width: 480px;
+  height: 249px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  display: none;
+}
+
+.modal h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height, or 133% */
+
+  letter-spacing: -0.5px;
+
+  color: #0c0e16;
+  margin-bottom: 13px;
+}
+
+.modal p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  /* or 183% */
+
+  letter-spacing: -0.25px;
+
+  color: #888eb0;
+  margin-bottom: 16px;
+}
+.modal .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+    #overlay {
+        height: 100%;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -275,6 +327,6 @@ justify-content: space-between;
 @media screen and (min-width: 1440px) {
   .drawer,
   #overlay {
-    height: 100vh;
+    height: 100%;
   }
 }

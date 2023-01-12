@@ -1,6 +1,7 @@
 import "./details.css";
 import Drawer from "./drawer/Drawer";
 import Overlay from "./drawer/Overlay";
+import DeleteModal from "./modal/DeleteModal";
 
 const Details = () => {
     const handleClickEdit = (e) => {
@@ -8,8 +9,15 @@ const Details = () => {
         document.getElementById("drawer").style.transform = "translateX(0)";
         document.getElementById("overlay").style.display = "block"
     }
+
+    const handleDelete = () => {
+        // document.getElementById("action-buttons-mobile").style.display = "none";
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
   return (
     <div>
+      <DeleteModal />
       <Overlay />
       <Drawer />
       <div className="details">
@@ -29,7 +37,7 @@ const Details = () => {
 
           <div className="details__action-buttons">
             <button onClick={handleClickEdit}>Edit</button>
-            <button>Delete</button>
+            <button onClick={handleDelete}>Delete</button>
             <button>Mark as Paid</button>
           </div>
         </div>
@@ -126,9 +134,9 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div className="details__action-buttons--mobile">
+      <div id="action-buttons-mobile" className="details__action-buttons--mobile">
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
         <button>Mark as Paid</button>
       </div>
     </div>
