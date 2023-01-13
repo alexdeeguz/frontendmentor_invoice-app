@@ -1,4 +1,4 @@
-import "./common.css";
+import "../common.css";
 
 const COLORS = {
   primary: {

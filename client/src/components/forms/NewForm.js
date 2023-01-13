@@ -1,5 +1,5 @@
-import BackButton from "../common/BackButton";
-import Button from "../common/Button";
+import BackButton from "../common/buttons/BackButton";
+import Button from "../common/buttons/Button";
 import "./forms.css";
 
 const NewForm = () => {

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getInvoices } from "../../actions.js/invoices";
 
-import Drawer from "../details/drawer/Drawer";
-import Overlay from "../details/drawer/Overlay";
-import "./invoices.css";
+import Drawer from "../common/drawer/Drawer";
+import Overlay from "../common/drawer/Overlay";
 import InvoiceCard from "./partials/InvoiceCard";
+import InvoiceHeader from "./partials/InvoiceHeader";
+import "./invoices.css";
 
 const Invoices = () => {
   const navigate = useNavigate();
@@ -32,40 +33,12 @@ const Invoices = () => {
       <Overlay />
       <Drawer formType="new" />
       <div className="invoices">
-        <div className="invoices__header">
-          <div className="invoices__header--left">
-            <h1>Invoices</h1>
-            <p>7 invoices</p>
-          </div>
-
-          <div className="invoices__header--right">
-            <div className="filter__button">
-              <p>Filter</p>
-              <img src="/assets/icon-arrow-down.svg" alt="down arrow" />
-            </div>
-            <div
-              className="new__button new__button--desktop"
-              onClick={handleClickNew}
-            >
-              <img src="/assets/icon-plus.svg" alt="plus icon" />
-              <p>New</p>
-            </div>
-            <div
-              className="new__button new__button--mobile"
-              onClick={handleClickNew}
-            >
-              <img src="/assets/icon-plus.svg" alt="plus icon" />
-              <p>New</p>
-            </div>
-          </div>
-        </div>
+        <InvoiceHeader handleClickNew={handleClickNew} />
 
         <div className="invoices__main">
-          {
-            invoices.map(invoice => (
-              <InvoiceCard key={invoice._id} invoice={invoice}/>
-            ))
-          }
+          {invoices.map((invoice) => (
+            <InvoiceCard key={invoice._id} invoice={invoice} />
+          ))}
         </div>
       </div>
     </div>

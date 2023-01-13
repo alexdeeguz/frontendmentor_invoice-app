@@ -1,4 +1,4 @@
-import Button from "../../common/Button";
+import Button from "../buttons/Button";
 import EditForm from "../../forms/EditForm";
 import NewForm from "../../forms/NewForm";
 
