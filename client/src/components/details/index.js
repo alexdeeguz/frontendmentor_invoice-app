@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getDetails } from "../../actions.js/invoices";
 import BackButton from "../common/BackButton";
 import Button from "../common/Button";
 import "./details.css";
@@ -8,6 +10,15 @@ import DeleteModal from "./modal/DeleteModal";
 
 const Details = () => {
   const navigate = useNavigate()
+  const params = useParams()
+
+  const [invoice, setInvoice] = useState("")
+  console.log(invoice)
+  const { id, paymentDue, clientName, clientEmail, clientAddress, status, total, description, senderAddress, items } = invoice;
+  useEffect(() => {
+    getDetails(params.id)
+      .then(res => setInvoice(res.data))
+  }, [])
 
   const handleClickEdit = (e) => {
     e.preventDefault();
@@ -38,7 +49,7 @@ const Details = () => {
             <p>Status</p>
             <ul className="tag">
               <div className="tag__bg"></div>
-              <li>Paid</li>
+              <li>{status}</li>
             </ul>
           </div>
 
@@ -56,13 +67,13 @@ const Details = () => {
         <div className="card details__main">
           <div className="details__main--1">
             <div>
-              <h3>#XM9141</h3>
-              <p>Graphic Design</p>
+              <h3>#{id}</h3>
+              <p>{description}</p>
             </div>
             <div>
-              <p>11111 Something Ave</p>
-              <p>Los Angeles, CA 91919</p>
-              <p>United States</p>
+              <p>{senderAddress?.street}</p>
+              <p>{senderAddress?.city}</p>
+              <p>{senderAddress?.country}</p>
             </div>
           </div>
 
@@ -71,30 +82,30 @@ const Details = () => {
               <div>
                 <div>
                   <p>Invoice Date</p>
-                  <h2>21 Aug 2021</h2>
+                  <h2>{new Date(invoice.createdAt).toDateString()}</h2>
                 </div>
                 <div>
                   <p>Payment Due</p>
-                  <h2>20 Sep 2021</h2>
+                  <h2>{new Date(paymentDue).toDateString()}</h2>
                 </div>
               </div>
 
               <div>
                 <div>
                   <p>Bill To</p>
-                  <h2>Alex Grim</h2>
+                  <h2>{clientName}</h2>
                 </div>
                 <div>
-                  <p>11111 Something Ave</p>
-                  <p>Los Angeles, CA 91919</p>
-                  <p>United States</p>
+                  <p>{clientAddress?.street}</p>
+                  <p>{clientAddress?.city}</p>
+                  <p>{clientAddress?.country}</p>
                 </div>
               </div>
             </div>
 
             <div>
               <p>Sent to</p>
-              <h2>alexgrim@mail.com</h2>
+              <h2>{clientEmail}</h2>
             </div>
           </div>
 
@@ -108,17 +119,19 @@ const Details = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Banner Design</td>
-                <td>1</td>
-                <td>$156.00</td>
-                <td>$156.00</td>
-              </tr>
+              {items?.map((item, idx) => (
+                <tr key={idx}>
+                  <td>{item.name}</td>
+                  <td>{item.quantity}</td>
+                  <td>${item.price.toFixed(2)}</td>
+                  <td>${item.total.toFixed(2)}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
           <div className="details__grand-total details__grand-total--desktop">
             <p>Grand Total</p>
-            <h1>$556.00</h1>
+            <h1>${total?.toFixed(2)}</h1>
           </div>
 
           <div className="details__footer--mobile">

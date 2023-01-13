@@ -26,9 +26,7 @@ const Invoices = () => {
       navigate("/invoices/new");
     }
   };
-
-  console.log(invoices)
-
+  
   return (
     <div>
       <Overlay />
@@ -65,7 +63,7 @@ const Invoices = () => {
         <div className="invoices__main">
           {
             invoices.map(invoice => (
-              <InvoiceCard invoice={invoice}/>
+              <InvoiceCard key={invoice._id} invoice={invoice}/>
             ))
           }
         </div>

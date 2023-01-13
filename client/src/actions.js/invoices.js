@@ -7,3 +7,7 @@ export const getInvoices = () => {
 export const createInvoice = (data) => {
   return axios.post("/api/invoices", data);
 };
+
+export const getDetails = (id) => {
+    return axios.get(`/api/invoices/${id}`)
+}

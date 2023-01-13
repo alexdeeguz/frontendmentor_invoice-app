@@ -133,19 +133,35 @@
   position: relative;
 }
 
- .tag li {
+.tag li {
   list-style-position: inside;
 }
 
- .tag--success {
-    color: #33d69f;
+.tag--success {
+  color: #33d69f;
 }
 
- .tag__bg--success {
+.tag--pending {
+  color: #ff8f00;
+}
+
+.tag--neutral {
+  color: #373b53;
+}
+
+.tag__bg--success {
   background: #33d69f;
 }
 
- .tag__bg {
+.tag__bg--pending {
+  background: #ff8f00;
+}
+
+.tag__bg--neutral {
+  background: #373b53;
+}
+
+.tag__bg {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -174,7 +190,8 @@
     align-items: center;
   }
 
-  .invoice__card p, .invoice__card ul {
+  .invoice__card p,
+  .invoice__card ul {
     /* border: 1px solid red; */
     flex: 1;
     text-align: center;
