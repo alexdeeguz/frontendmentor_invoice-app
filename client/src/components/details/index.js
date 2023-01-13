@@ -29,7 +29,7 @@ const Details = () => {
     <div>
       <DeleteModal />
       <Overlay />
-      <Drawer />
+      <Drawer formType="edit" />
       <div className="details">
         <BackButton />
 

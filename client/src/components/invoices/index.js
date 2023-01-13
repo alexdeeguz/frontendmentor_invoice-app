@@ -18,7 +18,7 @@ const Invoices = () => {
   return (
     <div>
       <Overlay />
-      <Drawer />
+      <Drawer formType="new" />
       <div className="invoices">
         <div className="invoices__header">
           <div className="invoices__header--left">
