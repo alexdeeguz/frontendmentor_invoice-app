@@ -95,6 +95,7 @@
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
   padding: 24px;
+  margin-bottom: 16px;
 }
 
 .invoice__card--item1 {
@@ -132,16 +133,22 @@
   position: relative;
 }
 
-.invoices .tag li {
+ .tag li {
   list-style-position: inside;
-  color: #33d69f;
 }
 
-.invoices .tag__bg {
+ .tag--success {
+    color: #33d69f;
+}
+
+ .tag__bg--success {
+  background: #33d69f;
+}
+
+ .tag__bg {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #33d69f;
   mix-blend-mode: normal;
   opacity: 0.06;
   border-radius: 6px;
@@ -165,6 +172,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .invoice__card p, .invoice__card ul {
+    /* border: 1px solid red; */
+    flex: 1;
+    text-align: center;
+    /* min-width: 104px; */
+  }
+
+  .invoice__card ul {
+    margin-right: 20px;
   }
 
   .invoice__card--item5 {

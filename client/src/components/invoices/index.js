@@ -1,20 +1,34 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getInvoices } from "../../actions.js/invoices";
+
 import Drawer from "../details/drawer/Drawer";
 import Overlay from "../details/drawer/Overlay";
 import "./invoices.css";
+import InvoiceCard from "./partials/InvoiceCard";
 
 const Invoices = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [invoices, setInvoices] = useState([]);
+
+  useEffect(() => {
+    getInvoices()
+      .then((res) => setInvoices(res.data));
+  }, []);
+
   const handleClickNew = (e) => {
     e.preventDefault();
-    
+
     if (e.currentTarget.className.includes("desktop")) {
       document.getElementById("drawer").style.transform = "translateX(0)";
       document.getElementById("overlay").style.display = "block";
     } else {
-      navigate("/invoices/new")
+      navigate("/invoices/new");
     }
   };
+
+  console.log(invoices)
+
   return (
     <div>
       <Overlay />
@@ -49,17 +63,11 @@ const Invoices = () => {
         </div>
 
         <div className="invoices__main">
-          <div className="invoice__card">
-            <p className="invoice__card--item1">#RT3080</p>
-            <p className="invoice__card--item2">Due 19 Aug 2021</p>
-            <p className="invoice__card--item4">Jenson Huang</p>
-            <p className="invoice__card--item3">$1,800.90</p>
-            <ul className="invoice__card--item5 tag">
-              <div className="invoice__card--item5-bg tag__bg"></div>
-              <li>Paid</li>
-            </ul>
-            <img src="/assets/icon-arrow-right.svg" alt="right arrow" />
-          </div>
+          {
+            invoices.map(invoice => (
+              <InvoiceCard invoice={invoice}/>
+            ))
+          }
         </div>
       </div>
     </div>

@@ -4,7 +4,10 @@ const Overlay = () => {
         e.preventDefault();
         document.getElementById("drawer").style.transform = "translateX(-150%)"
         document.getElementById("overlay").style.display = "none"
-        document.getElementById("overlay--delete").style.display = "none";
+        const deleteOverlay = document.getElementById("overlay--delete")
+        if (deleteOverlay) {
+          deleteOverlay.style.display = "none";
+        }
         document.getElementById("modal").style.display = "none";
     }
   return <div onClick={handleClose} id="overlay" className="overlay"></div>;
