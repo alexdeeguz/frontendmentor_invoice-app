@@ -5,6 +5,7 @@ import NewForm from "../../forms/NewForm";
 const Drawer = ({ formType }) => {
   const handleCancel = (e) => {
     e.preventDefault();
+      document.getElementById("body").style.overflow = "auto";
     document.getElementById("drawer").style.transform = "translateX(-150%)";
     document.getElementById("overlay").style.display = "none";
     document.getElementById("overlay--delete").style.display = "none";
@@ -16,7 +17,9 @@ const Drawer = ({ formType }) => {
       <>
         <EditForm />
         <div className="action-buttons">
-          <Button className="secondary" onClick={handleCancel}>Cancel</Button>
+          <Button className="secondary" onClick={handleCancel}>
+            Cancel
+          </Button>
           <Button className="primary">Save Changes</Button>
         </div>
       </>
@@ -24,7 +27,9 @@ const Drawer = ({ formType }) => {
       <>
         <NewForm />
         <div className="action-buttons action-buttons--new">
-          <Button className="secondary" onClick={handleCancel}>Discard</Button>
+          <Button className="secondary" onClick={handleCancel}>
+            Discard
+          </Button>
           <div>
             <Button className="dark">Save as Draft</Button>
             <Button className="primary">Save & Send</Button>

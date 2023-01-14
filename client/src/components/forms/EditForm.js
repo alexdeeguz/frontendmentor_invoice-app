@@ -5,7 +5,7 @@ import "./forms.css";
 const EditForm = () => {
   return (
     <div className="form-container">
-      <BackButton />
+      {/* <BackButton /> */}
 
       <div className="form">
         <h1>Edit #XM9141</h1>
@@ -99,10 +99,10 @@ const EditForm = () => {
         </div>
         <Button className="secondary">+Add New Item</Button>
       </div>
-      <div className="action-buttons">
+      {/* <div className="action-buttons">
         <Button className="secondary">Cancel</Button>
         <Button className="primary">Save Changes</Button>
-      </div>
+      </div> */}
     </div>
   );
 };

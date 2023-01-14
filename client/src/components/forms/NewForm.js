@@ -5,7 +5,7 @@ import "./forms.css";
 const NewForm = () => {
   return (
     <div className="form-container desktop">
-      <BackButton />
+      {/* <BackButton /> */}
 
       <div className="form">
         <h1>New Invoice</h1>
@@ -96,11 +96,11 @@ const NewForm = () => {
         </div>
         <Button className="secondary">+Add New Item</Button>
       </div>
-      <div className="action-buttons">
+      {/* <div className="action-buttons">
         <Button className="secondary">Discard</Button>
         <Button className="dark">Save as Draft</Button>
         <Button className="primary">Save & Send</Button>
-      </div>
+      </div> */}
     </div>
   );
 };

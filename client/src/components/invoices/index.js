@@ -19,13 +19,16 @@ const Invoices = () => {
 
   const handleClickNew = (e) => {
     e.preventDefault();
-
-    if (e.currentTarget.className.includes("desktop")) {
-      document.getElementById("drawer").style.transform = "translateX(0)";
-      document.getElementById("overlay").style.display = "block";
-    } else {
-      navigate("/invoices/new");
-    }
+    window.scrollTo(0, 0);
+    document.getElementById("drawer").style.transform = "translateX(0)";
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("body").style.overflow = "hidden";
+    // if (e.currentTarget.className.includes("desktop")) {
+    //   document.getElementById("drawer").style.transform = "translateX(0)";
+    //   document.getElementById("overlay").style.display = "block";
+    // } else {
+    //   navigate("/invoices/new");
+    // }
   };
   
   return (

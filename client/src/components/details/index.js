@@ -20,16 +20,13 @@ const Details = () => {
 
   const handleClickEdit = (e) => {
     e.preventDefault();
-    if (e.target.className.includes("mobile")) {
-      navigate("/invoices/1/edit");
-    } else {
-      document.getElementById("drawer").style.transform = "translateX(0)";
-      document.getElementById("overlay").style.display = "block";
-    }
+    window.scrollTo(0, 0);
+    document.getElementById("drawer").style.transform = "translateX(0)";
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("body").style.overflow = "hidden";
   };
 
   const handleClickDelete = () => {
-    // document.getElementById("action-buttons-mobile").style.display = "none";
     document.getElementById("modal").style.display = "block";
     document.getElementById("overlay").style.display = "block";
     document.getElementById("overlay--delete").style.display = "block";

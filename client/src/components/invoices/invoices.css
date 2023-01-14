@@ -172,7 +172,7 @@
 
 @media screen and (max-width: 767px) {
   .invoices .new__button--desktop {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -210,15 +210,10 @@
     display: block;
     float: right;
   }
-
-  .invoices .new__button--mobile {
-    display: none;
-  }
 }
 
 @media screen and (min-width: 1440px) {
-  .invoices,
-  .details {
+  .invoices {
     /* padding: 72px 252px; */
     margin: 72px 252px;
     /* width: 100%; */

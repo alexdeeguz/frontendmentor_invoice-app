@@ -18,13 +18,6 @@ const InvoiceHeader = ({ handleClickNew }) => {
           <img src="/assets/icon-plus.svg" alt="plus icon" />
           <p>New</p>
         </div>
-        <div
-          className="new__button new__button--mobile"
-          onClick={handleClickNew}
-        >
-          <img src="/assets/icon-plus.svg" alt="plus icon" />
-          <p>New</p>
-        </div>
       </div>
     </div>
   );

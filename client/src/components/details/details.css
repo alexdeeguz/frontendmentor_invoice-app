@@ -156,8 +156,20 @@
 /* DRAWER */
 .drawer {
   /* border: 1px solid red; */
-  display: none;
+  /* display: none; */
   position: relative;
+      position: absolute;
+        z-index: 2;
+        transform: translateX(-150%);
+        transition: transform ease-out 0.5s;
+        border-radius: 0px 20px 20px 0px;
+        /* height: 110vh; */
+        overflow: scroll;
+        /* overflow: hidden; */
+        /* overflow-x: hidden; */
+        height: calc(100vh - 72px);
+        /* padding-right: 50px; */
+        /* border: 1px solid red; */
   /* overflow: hidden; */
 }
 
@@ -239,6 +251,11 @@
 
     letter-spacing: -0.25px;
   }
+  
+  .drawer > .action-buttons {
+      padding: 21px 24px;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -314,21 +331,30 @@
   #overlay {
     height: 100%;
   }
+
+  .details__footer {
+    margin-top: 25px;
+  }
+
+  .details {
+      height: 100vh;
+        overflow: scroll;
+  }
 }
 
 @media screen and (max-width: 767px) {
   #overlay {
     /* border: 1px solid red; */
-    display: none !important;
+    /* display: none !important; */
   }
-  #overlay--delete {
+  /* #overlay--delete {
     width: 100vw;
     height: 100vh;
     position: absolute;
     top: 0;
-    /* border: 1px solid red; */
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
     display: none;
-  }
+  } */
 }
+
