@@ -9,6 +9,10 @@ const ThemeContextProvider = ({ children }) => {
     document.getElementById("body").style.background = darkMode
       ? "#141625"
       : "#F2F2F2";
+
+    document.getElementById("nav").style.background = darkMode
+      ? "#1E2139"
+      : "#373B53";
   }, [darkMode]);
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>

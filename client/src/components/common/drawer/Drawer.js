@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 import Button from "../buttons/Button";
 import EditForm from "../../forms/EditForm";
 import NewForm from "../../forms/NewForm";
@@ -13,10 +15,13 @@ const Drawer = ({ formType }) => {
   };
 
   const Form = () => {
+      const { darkMode } = useContext(ThemeContext);
+      const darkModeBg = darkMode ? "bg--xdark" : null;
+      const darkModeInput = darkMode ? "xdark" : null;
     return formType === "edit" ? (
       <>
-        <EditForm />
-        <div className="action-buttons">
+        <EditForm darkModeBg={darkModeBg} darkModeInput={darkModeInput} />
+        <div className={`action-buttons ${darkModeInput}`}>
           <Button className="secondary" onClick={handleCancel}>
             Cancel
           </Button>
@@ -25,8 +30,8 @@ const Drawer = ({ formType }) => {
       </>
     ) : (
       <>
-        <NewForm />
-        <div className="action-buttons action-buttons--new">
+        <NewForm darkModeBg={darkModeBg} darkModeInput={darkModeInput} />
+        <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
           <Button className="secondary" onClick={handleCancel}>
             Discard
           </Button>

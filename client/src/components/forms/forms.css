@@ -1,7 +1,6 @@
 .form {
   background-color: #ffffff;
   padding: 24px;
-  /* border: 1px solid #ffffff; */
 }
 
 .form h1 {
@@ -176,23 +175,12 @@ input {
 
 /* BUTTONS */
 
-.form-container .action-buttons {
-  display: flex;
-  justify-content: flex-end;
-  background-color: #ffffff;
-  padding: 24px 24px;
-  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
-}
-
 .form button {
   width: 100%;
   margin-top: 48px;
 }
 
 @media screen and (min-width: 768px) {
-  .form-container .action-buttons {
-    display: none;
-  }
   .form__bill-from {
     grid-template-areas:
       "address address address"
@@ -212,7 +200,7 @@ input {
 
 @media screen and (min-width: 768px) {
   .form-container {
-    height: calc(100vh - 111px - 49px);
+    height: calc(100vh - 145px);
     overflow: scroll;
     /* scrollbar-color: white; */
   }
@@ -243,23 +231,24 @@ input {
     letter-spacing: -0.375px;
     color: #777f98;
   }
+}
 
-  .form h3 {
+.xdark {
+    border: none;
+      background: #1E2139;
+      color: white;
+}
 
-  }
+.bg--xdark {
+  background: #141625;
+}
 
-  input[type="text"],
-  input[type="date"],
-  select {
+.bg--xdark > h1 {
+  color: white;
+}
 
-  }
-
-  input[type="number"] {
-
-  }
-
-  label,
-  input {
-
-  }
+.bg--xdark .xdark {
+      border: none;
+        background: #1E2139;
+        color: white;
 }

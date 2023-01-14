@@ -11,16 +11,23 @@ const Nav = () => {
   };
   
   return (
-    <nav>
+    <nav id="nav">
       <div className="logo" onClick={navigateHome}>
         <img src="/assets/logo.svg" alt="logo" />
         <div className="logo__bottom"></div>
       </div>
       <div className="nav__right">
-        <div className="nav__icon" onClick={() => {
-          setDarkMode(!darkMode);
-        }}>
-          <img src="/assets/icon-moon.svg" alt="theme icon" />
+        <div
+          className="nav__icon"
+          onClick={() => {
+            setDarkMode(!darkMode);
+          }}
+        >
+          {darkMode ? (
+            <img src="/assets/icon-sun.svg" alt="theme icon" />
+          ) : (
+            <img src="/assets/icon-moon.svg" alt="theme icon" />
+          )}
         </div>
         <div className="nav__divider"></div>
         <div className="nav__icon">

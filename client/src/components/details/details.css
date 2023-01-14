@@ -34,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   flex: 1;
 }
 
@@ -178,6 +178,12 @@
   background-color: #ffffff;
   display: flex;
   justify-content: flex-end;
+}
+
+.drawer > .xdark {
+      border: none;
+      background: #141625;
+      color: white;
 }
 
 .drawer > .action-buttons--new {
@@ -334,3 +340,13 @@
     overflow: scroll;
   }
 }
+
+.details .dark, .main .dark, #dark {
+  background: #1E2139;
+  color: #ffffff;
+}
+
+.details .lightdark {
+  background: #252945;
+}
+

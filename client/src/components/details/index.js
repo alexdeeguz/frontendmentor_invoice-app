@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { getDetails } from "../../actions.js/invoices";
 
 import Drawer from "../common/drawer/Drawer";
@@ -8,11 +8,11 @@ import MainContent from "./main/MainContent";
 import DeleteModal from "./modal/DeleteModal";
 import MobileActionButtons from "./partials/MobileActionButtons";
 import "./details.css";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Details = () => {
-  const navigate = useNavigate();
   const params = useParams();
-
+  const { darkMode } = useContext(ThemeContext);
   const [invoice, setInvoice] = useState("");
   useEffect(() => {
     getDetails(params.id).then((res) => setInvoice(res.data));
@@ -20,7 +20,9 @@ const Details = () => {
 
   const handleClickEdit = (e) => {
     e.preventDefault();
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
     document.getElementById("drawer").style.transform = "translateX(0)";
     document.getElementById("overlay").style.display = "block";
     document.getElementById("body").style.overflow = "hidden";
@@ -32,17 +34,24 @@ const Details = () => {
     document.getElementById("overlay--delete").style.display = "block";
   };
 
+  const darkModeBg = darkMode ? "dark" : "";
+  const darkModeLightBg = darkMode ? "lightdark" : "";
+
   return (
     <div>
       <DeleteModal />
       <Overlay />
       <Drawer formType="edit" />
       <MainContent
+        darkMode={darkMode}
+        darkModeBg={darkModeBg}
+        darkModeLightBg={darkModeLightBg}
         invoice={invoice}
         handleClickEdit={handleClickEdit}
         handleClickDelete={handleClickDelete}
       />
       <MobileActionButtons
+        darkModeBg={darkModeBg}
         handleClickDelete={handleClickDelete}
         handleClickEdit={handleClickEdit}
       />

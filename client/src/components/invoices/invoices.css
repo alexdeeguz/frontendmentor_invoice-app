@@ -5,10 +5,6 @@
   padding: 24px;
 }
 
-.card--dark {
-  background: #1E2139;
-}
-
 .invoices {
   color: #0c0e16;
   padding: 32px 24px;
@@ -33,10 +29,6 @@
   line-height: 15px;
   letter-spacing: -0.25px;
   color: #888eb0;
-}
-
-.invoices__header--left--dark p {
-  color: #ffffff;
 }
 
 .invoices__header--right {
@@ -104,10 +96,6 @@
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 16px;
-}
-
-.invoice__card--dark {
-  background: #1E2139;
 }
 
 .invoice__card--item1 {
@@ -234,11 +222,7 @@
 
 @media screen and (min-width: 1440px) {
   .invoices {
-    /* padding: 72px 252px; */
     margin: 72px 252px;
-    /* width: 100%; */
-    /* min-width: 750px; */
-    /* flex: 1; */
   }
 
   .invoices__header--left h1 {

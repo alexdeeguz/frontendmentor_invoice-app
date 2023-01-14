@@ -1,7 +1,7 @@
 import Button from "../../common/buttons/Button";
 import BackButton from "../../common/buttons/BackButton";
 
-const MainContent = ({ invoice, handleClickDelete, handleClickEdit }) => {
+const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleClickDelete, handleClickEdit }) => {
       const {
         id,
         paymentDue,
@@ -20,19 +20,19 @@ const MainContent = ({ invoice, handleClickDelete, handleClickEdit }) => {
             ? "tag--pending"
             : status === "paid"
             ? "tag--success"
-            : "tag--neutral";
+            : `tag--neutral ${darkMode ? "tag--neutral--dark" : null}`;
         const tagBackground =
           status === "pending"
             ? "tag__bg--pending"
             : status === "paid"
             ? "tag__bg--success"
-            : "tag__bg--neutral";
+            : `tag__bg--neutral ${darkMode ? "tag__bg--neutral--dark" : null}`;
 
   return (
     <div className="details">
       <BackButton />
 
-      <div className="card details__actions">
+      <div className={`card details__actions ${darkModeBg}`}>
         <div className="details__status">
           <p>Status</p>
           <ul className={`tag ${tagColor}`}>
@@ -52,7 +52,7 @@ const MainContent = ({ invoice, handleClickDelete, handleClickEdit }) => {
         </div>
       </div>
 
-      <div className="card details__main">
+      <div className={`card details__main ${darkModeBg}`}>
         <div className="details__main--1">
           <div>
             <h3>#{id}</h3>
@@ -97,7 +97,7 @@ const MainContent = ({ invoice, handleClickDelete, handleClickEdit }) => {
           </div>
         </div>
 
-        <table className="details__footer">
+        <table className={`details__footer ${darkModeLightBg}`}>
           <thead>
             <tr>
               <td>Item Name</td>

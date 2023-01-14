@@ -14,10 +14,10 @@ button {
     background-color: #FF9797 !important;
 }
 
-.dark:hover {
+/* .dark:hover {
     background-color: #373B53 !important;
     color: #DFE3FA !important;
-}
+} */
 
 .form-container .back-btn {
     padding-top: 32px;
