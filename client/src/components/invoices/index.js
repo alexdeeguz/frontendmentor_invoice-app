@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getInvoices } from "../../actions.js/invoices";
 
 import Drawer from "../common/drawer/Drawer";
@@ -9,7 +8,6 @@ import InvoiceHeader from "./partials/InvoiceHeader";
 import "./invoices.css";
 
 const Invoices = () => {
-  const navigate = useNavigate();
   const [invoices, setInvoices] = useState([]);
 
   useEffect(() => {
@@ -23,12 +21,6 @@ const Invoices = () => {
     document.getElementById("drawer").style.transform = "translateX(0)";
     document.getElementById("overlay").style.display = "block";
     document.getElementById("body").style.overflow = "hidden";
-    // if (e.currentTarget.className.includes("desktop")) {
-    //   document.getElementById("drawer").style.transform = "translateX(0)";
-    //   document.getElementById("overlay").style.display = "block";
-    // } else {
-    //   navigate("/invoices/new");
-    // }
   };
   
   return (

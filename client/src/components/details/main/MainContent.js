@@ -15,6 +15,19 @@ const MainContent = ({ invoice, handleClickDelete, handleClickEdit }) => {
         items,
       } = invoice;
 
+        const tagColor =
+          status === "pending"
+            ? "tag--pending"
+            : status === "paid"
+            ? "tag--success"
+            : "tag--neutral";
+        const tagBackground =
+          status === "pending"
+            ? "tag__bg--pending"
+            : status === "paid"
+            ? "tag__bg--success"
+            : "tag__bg--neutral";
+
   return (
     <div className="details">
       <BackButton />
@@ -22,8 +35,8 @@ const MainContent = ({ invoice, handleClickDelete, handleClickEdit }) => {
       <div className="card details__actions">
         <div className="details__status">
           <p>Status</p>
-          <ul className="tag">
-            <div className="tag__bg"></div>
+          <ul className={`tag ${tagColor}`}>
+            <div className={`tag__bg ${tagBackground}`}></div>
             <li>{status}</li>
           </ul>
         </div>

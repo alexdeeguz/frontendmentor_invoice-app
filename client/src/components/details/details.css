@@ -52,12 +52,6 @@
   color: #858bb2;
 }
 
-.details__status .tag li {
-  list-style-position: inside;
-  list-style-position: inside;
-  color: #33d69f;
-}
-
 .details__status .tag {
   /* border: 1px solid red; */
   padding: 12px 18px;
@@ -67,14 +61,37 @@
   align-items: center;
 }
 
+.details__status > ul {
+  /* border: 1px solid red; */
+  width: 150px;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+}
+
+.details__status .tag li {
+  list-style-position: inside;
+  list-style-position: inside;
+  /* color: #33d69f; */
+}
+
+.details__status .tag--success {
+  color: #33d69f;
+}
+
 .details .tag__bg {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #33d69f;
   mix-blend-mode: normal;
   opacity: 0.06;
   border-radius: 6px;
+}
+
+.details .tag__bg--success {
+  background: #33d69f;
 }
 
 .details__action-buttons {
@@ -158,18 +175,18 @@
   /* border: 1px solid red; */
   /* display: none; */
   position: relative;
-      position: absolute;
-        z-index: 2;
-        transform: translateX(-150%);
-        transition: transform ease-out 0.5s;
-        border-radius: 0px 20px 20px 0px;
-        /* height: 110vh; */
-        overflow: scroll;
-        /* overflow: hidden; */
-        /* overflow-x: hidden; */
-        height: calc(100vh - 72px);
-        /* padding-right: 50px; */
-        /* border: 1px solid red; */
+  position: absolute;
+  z-index: 2;
+  transform: translateX(-150%);
+  transition: transform ease-out 0.5s;
+  border-radius: 0px 20px 20px 0px;
+  /* height: 110vh; */
+  overflow: scroll;
+  /* overflow: hidden; */
+  /* overflow-x: hidden; */
+  height: calc(100vh - 72px);
+  /* padding-right: 50px; */
+  /* border: 1px solid red; */
   /* overflow: hidden; */
 }
 
@@ -251,11 +268,10 @@
 
     letter-spacing: -0.25px;
   }
-  
-  .drawer > .action-buttons {
-      padding: 21px 24px;
-  }
 
+  .drawer > .action-buttons {
+    padding: 21px 24px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -337,8 +353,8 @@
   }
 
   .details {
-      height: 100vh;
-        overflow: scroll;
+    height: 100vh;
+    overflow: scroll;
   }
 }
 
@@ -357,4 +373,3 @@
     display: none;
   } */
 }
-
