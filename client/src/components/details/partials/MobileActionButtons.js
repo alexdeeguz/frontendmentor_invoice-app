@@ -2,7 +2,7 @@ import Button from "../../common/buttons/Button";
 
 const MobileActionButtons = ({ handleClickDelete, handleClickEdit, darkModeBg }) => {
   return (
-    <div id="action-buttons-mobile" className="details__action-buttons--mobile" id="dark">
+    <div id="dark" className="details__action-buttons--mobile">
       <Button className="secondary mobile" onClick={handleClickEdit}>
         Edit
       </Button>

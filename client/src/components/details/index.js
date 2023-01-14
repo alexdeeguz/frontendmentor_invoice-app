@@ -39,7 +39,7 @@ const Details = () => {
 
   return (
     <div>
-      <DeleteModal />
+      <DeleteModal invoice={invoice}/>
       <Overlay />
       <Drawer formType="edit" />
       <MainContent

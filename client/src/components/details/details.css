@@ -131,7 +131,7 @@
 .details__footer {
   margin-top: 40px;
   background: #f9fafe;
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .details__action-buttons--mobile {

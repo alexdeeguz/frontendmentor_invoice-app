@@ -12,15 +12,25 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async(req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const invoice = await Invoice.findOne({id: req.params.id});
+    const invoice = await Invoice.findOne({ id: req.params.id });
     res.json(invoice);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Server error" });
   }
-})
+});
+
+router.post("/delete", async (req, res) => {
+  try {
+    await Invoice.findByIdAndDelete(req.body._id)
+    res.send(true)
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 router.post("/", async (req, res) => {
   const makeId = () => {

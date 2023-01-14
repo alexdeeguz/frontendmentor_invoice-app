@@ -9,5 +9,10 @@ export const createInvoice = (data) => {
 };
 
 export const getDetails = (id) => {
-    return axios.get(`/api/invoices/${id}`)
-}
+  return axios.get(`/api/invoices/${id}`);
+};
+
+export const deleteInvoice = (data) => {
+  console.log(data)
+  return axios.post("/api/invoices/delete", data);
+};

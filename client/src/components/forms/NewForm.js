@@ -1,7 +1,33 @@
+import { useState } from "react";
 import Button from "../common/buttons/Button";
 import "./forms.css";
 
-const NewForm = ({ darkModeBg, darkModeInput}) => {
+const NewForm = ({ darkModeBg, darkModeInput }) => {
+  const [formValues, setFormValues] = useState({
+    billFrom: {
+      address: "",
+      city: "",
+      zip: "",
+      country: "",
+    },
+    billTo: {
+      name: "",
+      email: "",
+      address: "",
+      city: "",
+      zip: "",
+      country: "",
+      invoiceDate: "",
+      paymentTerms: "",
+      description: "",
+    },
+  });
+
+  const [items, setItems] = useState([]);
+
+  const handleChange = (e) => {
+
+  };
   return (
     <div className="form-container desktop">
       {/* <BackButton /> */}

@@ -1,10 +1,19 @@
+import { useNavigate } from "react-router-dom";
+import { deleteInvoice } from "../../../actions.js/invoices";
 import Button from "../../common/buttons/Button";
 
-const DeleteModal = () => {
+const DeleteModal = ({ invoice }) => {
+  const navigate = useNavigate();
   const handleClickCancel = () => {
     document.getElementById("modal").style.display = "none";
     document.getElementById("overlay--delete").style.display = "none";
     document.getElementById("overlay").style.display = "none";
+  };
+
+  const handleClickDelete = () => {
+    deleteInvoice(invoice).then(() => {
+      navigate("/");
+    });
   };
   return (
     <>
@@ -19,7 +28,9 @@ const DeleteModal = () => {
           <Button className="secondary" onClick={handleClickCancel}>
             Cancel
           </Button>
-          <Button className="danger">Delete</Button>
+          <Button className="danger" onClick={handleClickDelete}>
+            Delete
+          </Button>
         </div>
       </div>
     </>
