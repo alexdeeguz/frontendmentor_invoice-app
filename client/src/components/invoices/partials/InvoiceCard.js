@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const InvoiceCard = ({ invoice }) => {
+const InvoiceCard = ({ invoice, darkModeActiveText, darkModeActiveBg, darkMode }) => {
   const navigate = useNavigate();
 
   const { id, paymentDue, clientName, status, total } = invoice;
@@ -9,16 +9,16 @@ const InvoiceCard = ({ invoice }) => {
       ? "tag--pending"
       : status === "paid"
       ? "tag--success"
-      : "tag--neutral";
+      : `tag--neutral ${darkMode ? "tag--neutral--dark": ""}`;
   const tagBackground =
     status === "pending"
       ? "tag__bg--pending"
       : status === "paid"
       ? "tag__bg--success"
-      : "tag__bg--neutral";
+      : `tag__bg--neutral ${darkMode ? "tag__bg--neutral--dark" : ""}`;
 
   return (
-    <div className="invoice__card" onClick={() => {navigate(`/invoices/${id}`)}}>
+    <div className={`invoice__card ${darkModeActiveBg}`} onClick={() => {navigate(`/invoices/${id}`)}}>
       <p className="invoice__card--item1">#{id}</p>
       <p className="invoice__card--item2">
         Due {new Date(paymentDue).toDateString()}

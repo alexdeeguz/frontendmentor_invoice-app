@@ -5,6 +5,10 @@
   padding: 24px;
 }
 
+.card--dark {
+  background: #1E2139;
+}
+
 .invoices {
   color: #0c0e16;
   padding: 32px 24px;
@@ -29,6 +33,10 @@
   line-height: 15px;
   letter-spacing: -0.25px;
   color: #888eb0;
+}
+
+.invoices__header--left--dark p {
+  color: #ffffff;
 }
 
 .invoices__header--right {
@@ -98,6 +106,10 @@
   margin-bottom: 16px;
 }
 
+.invoice__card--dark {
+  background: #1E2139;
+}
+
 .invoice__card--item1 {
   grid-area: id;
   font-weight: 700;
@@ -149,6 +161,10 @@
   color: #373b53;
 }
 
+.tag--neutral--dark {
+  color: #ffffff;
+}
+
 .tag__bg--success {
   background: #33d69f;
 }
@@ -160,6 +176,10 @@
 .tag__bg--neutral {
   background: #373b53;
 }
+
+.tag__bg--neutral--dark {
+  background: #DFE3FA;
+} 
 
 .tag__bg {
   position: absolute;
@@ -233,4 +253,12 @@
     line-height: 15px;
     letter-spacing: -0.25px;
   }
+}
+
+.text--dark {
+  color: #ffffff;
+}
+
+.bg--dark {
+    background: #1E2139;
 }

@@ -4,10 +4,11 @@ import EditForm from "./components/forms/EditForm";
 import NewForm from "./components/forms/NewForm";
 import Invoices from "./components/invoices";
 import Nav from "./components/nav";
+import ThemeContextProvider from "./context/ThemeContext";
 
 function App() {
   return (
-    <>
+    <ThemeContextProvider>
       <BrowserRouter>
         <div className="app">
           <Nav />
@@ -19,7 +20,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
-    </>
+    </ThemeContextProvider>
   );
 }
 
