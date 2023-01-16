@@ -11,8 +11,8 @@ import { ThemeContext } from "../../context/ThemeContext";
 const Invoices = () => {
   const [invoices, setInvoices] = useState([]);
   const { darkMode } = useContext(ThemeContext);
-  const darkModeActiveText = darkMode ? "text--dark" : null
-  const darkModeActiveBg = darkMode ? "bg--dark" : null
+  const darkModeActiveText = darkMode ? "text--dark" : null;
+  const darkModeActiveBg = darkMode ? "bg--dark" : null;
   useEffect(() => {
     getInvoices().then((res) => setInvoices(res.data));
   }, []);
@@ -28,13 +28,19 @@ const Invoices = () => {
   return (
     <div>
       <Overlay />
-      <Drawer formType="new" />
+      <Drawer formType="new" invoices={invoices} setInvoices={setInvoices} />
       <div className={`invoices ${darkModeActiveText}`}>
         <InvoiceHeader handleClickNew={handleClickNew} />
 
         <div className="invoices__main">
-          {invoices.map((invoice) => (
-            <InvoiceCard key={invoice._id} darkMode={darkMode} invoice={invoice} darkModeActiveText={darkModeActiveText} darkModeActiveBg={darkModeActiveBg}/>
+          {invoices?.map((invoice) => (
+            <InvoiceCard
+              key={invoice._id}
+              darkMode={darkMode}
+              invoice={invoice}
+              darkModeActiveText={darkModeActiveText}
+              darkModeActiveBg={darkModeActiveBg}
+            />
           ))}
         </div>
       </div>

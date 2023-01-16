@@ -4,34 +4,44 @@ import Button from "../buttons/Button";
 import EditForm from "../../forms/EditForm";
 import NewForm from "../../forms/NewForm";
 
-const Drawer = ({ formType }) => {
-  const handleCancel = (e) => {
-    e.preventDefault();
-      document.getElementById("body").style.overflow = "auto";
+const Drawer = ({ formType, invoices, setInvoices }) => {
+  const handleCancel = () => {
+    document.getElementById("body").style.overflow = "auto";
     document.getElementById("drawer").style.transform = "translateX(-150%)";
     document.getElementById("overlay").style.display = "none";
-    document.getElementById("overlay--delete").style.display = "none";
+    document.getElementById("overlay--delete").style.display =
+      document.getElementById("overlay--delete") ? "none" : null;
     document.getElementById("modal").style.display = "none";
   };
 
   const Form = () => {
-      const { darkMode } = useContext(ThemeContext);
-      const darkModeBg = darkMode ? "bg--xdark" : null;
-      const darkModeInput = darkMode ? "xdark" : null;
+    const { darkMode } = useContext(ThemeContext);
+    const darkModeBg = darkMode ? "bg--xdark" : null;
+    const darkModeInput = darkMode ? "xdark" : null;
     return formType === "edit" ? (
       <>
-        <EditForm darkModeBg={darkModeBg} darkModeInput={darkModeInput} />
-        <div className={`action-buttons ${darkModeInput}`}>
+        <EditForm
+          darkModeBg={darkModeBg}
+          darkModeInput={darkModeInput}
+          handleCancel={handleCancel}
+        />
+        {/* <div className={`action-buttons ${darkModeInput}`}>
           <Button className="secondary" onClick={handleCancel}>
             Cancel
           </Button>
           <Button className="primary">Save Changes</Button>
-        </div>
+        </div> */}
       </>
     ) : (
       <>
-        <NewForm darkModeBg={darkModeBg} darkModeInput={darkModeInput} />
-'        <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
+        <NewForm
+          darkModeBg={darkModeBg}
+          darkModeInput={darkModeInput}
+          handleCancel={handleCancel}
+          invoices={invoices}
+          setInvoices={setInvoices}
+        />
+        {/* <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
           <Button className="secondary" onClick={handleCancel}>
             Discard
           </Button>
@@ -39,7 +49,7 @@ const Drawer = ({ formType }) => {
             <Button className="dark">Save as Draft</Button>
             <Button className="primary">Save & Send</Button>
           </div>
-        </div>'
+        </div> */}
       </>
     );
   };

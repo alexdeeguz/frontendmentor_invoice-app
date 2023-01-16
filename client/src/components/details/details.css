@@ -180,15 +180,54 @@
   justify-content: flex-end;
 }
 
+.action-buttons {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  /* padding: 31px 56px; */
+  /* padding: 25px; */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* justify-content: flex-end; */
+  /* border: 1px solid red; */
+}
+
+.action-buttons > div {
+  /* border: 1px solid red; */
+  display: flex;
+  /* width: 100%; */
+  /* padding: 25px; */
+}
+
+.action-buttons > div > button, .action-buttons button {
+  width: 128px;
+  height: 48px;
+  /* border: 1px solid red; */
+  font-weight: 700;
+    font-size: 10px !important;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+  
+    letter-spacing: -0.25px;
+    margin: 25px;
+}
+
+.action-buttons--new {
+  justify-content: space-between;
+}
+
 .drawer > .xdark {
       border: none;
       background: #141625;
       color: white;
 }
 
-.drawer > .action-buttons--new {
+/* .drawer > .action-buttons--new {
   justify-content: space-between;
-}
+} */
 
 #overlay {
   width: 100vw;
@@ -245,6 +284,10 @@
   .drawer > .action-buttons {
     padding: 21px 24px;
   }
+
+    .action-buttons {
+      padding: 21px 24px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -349,4 +392,5 @@
 .details .lightdark {
   background: #252945;
 }
+
 

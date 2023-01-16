@@ -13,6 +13,5 @@ export const getDetails = (id) => {
 };
 
 export const deleteInvoice = (data) => {
-  console.log(data)
   return axios.post("/api/invoices/delete", data);
 };

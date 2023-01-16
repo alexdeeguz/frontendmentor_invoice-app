@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { createInvoice } from "../../actions.js/invoices";
 import Button from "../common/buttons/Button";
 import "./forms.css";
 
-const NewForm = ({ darkModeBg, darkModeInput }) => {
+const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoices }) => {
   const [formValues, setFormValues] = useState({
     billFrom: {
       senderAddress: {
@@ -22,7 +23,7 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
         country: "",
       },
       invoiceDate: "",
-      paymentTerms: "",
+      paymentTerms: 15,
       description: "",
     },
   });
@@ -56,6 +57,7 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
         newItems.push({
           ...item,
           [keyName]: e.target.value,
+          total: Number(item.price) * Number(item.quantity)
         });
       } else {
         newItems.push(item);
@@ -78,17 +80,17 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
 
   const handleChangeBillTo = (e, key) => {
     if (key.includes("clientAddress")) {
-      const [_, clientAddressKeyName] = key.split(" ")
+      const [_, clientAddressKeyName] = key.split(" ");
       setFormValues({
         ...formValues,
         billTo: {
           ...formValues.billTo,
           clientAddress: {
             ...formValues.billTo.clientAddress,
-            [clientAddressKeyName]: e.target.value
-          }
-        }
-      })
+            [clientAddressKeyName]: e.target.value,
+          },
+        },
+      });
     } else {
       setFormValues({
         ...formValues,
@@ -100,7 +102,36 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
     }
   };
 
-  console.log(formValues);
+  const handleClickSaveAndSend = () => {
+    const { billFrom: { senderAddress }, billTo: { clientAddress, description, email, invoiceDate, name, paymentTerms } } = formValues
+    const createdAt = new Date(invoiceDate.split("-").join("/"))
+    const paymentDue = new Date(invoiceDate.split("-").join("/"))
+    paymentDue.setDate(paymentDue.getDate() + Number(paymentTerms))
+
+    let total = 0
+    items.forEach(item => {
+      let itemTotal = (Number(item.quantity) * Number(item.price))
+      total += Number(itemTotal)
+    })
+    const data = {
+      createdAt,
+      paymentDue, 
+      description,
+      paymentTerms,
+      clientName: name,
+      clientEmail: email,
+      senderAddress,
+      clientAddress,
+      items,
+      total
+    }
+
+    createInvoice(data)
+      .then((res) => {
+        setInvoices([...invoices, res.data])
+        handleCancel()
+      })
+  }
 
   return (
     <div className="form-container desktop">
@@ -200,6 +231,7 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
               className={darkModeInput}
               type="date"
               onChange={(e) => handleChangeBillTo(e, "invoiceDate")}
+              value={formValues.billTo.invoiceDate}
             />
           </label>
           <label className="form__item-8">
@@ -207,7 +239,9 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
             <select
               className={darkModeInput}
               onChange={(e) => handleChangeBillTo(e, "paymentTerms")}
+              value={formValues.billTo.paymentTerms}
             >
+              <option value={15}>Net 15 Days</option>
               <option value={30}>Net 30 Days</option>
             </select>
           </label>
@@ -268,9 +302,25 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
             </label>
           </div>
         ))}
-        <Button className={`secondary ${darkModeInput}`} onClick={addNewItem}>
+        <Button
+          id="add"
+          className={`secondary ${darkModeInput}`}
+          onClick={addNewItem}
+        >
           +Add New Item
         </Button>
+
+        <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
+          <Button className="secondary" onClick={handleCancel}>
+            Discard
+          </Button>
+          <div>
+            <Button className="dark">Save as Draft</Button>
+            <Button className="primary" onClick={handleClickSaveAndSend}>
+              Save & Send
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

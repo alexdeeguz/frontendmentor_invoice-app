@@ -5,8 +5,7 @@ const InvoiceSchema = mongoose.Schema({
     type: String,
   },
   createdAt: {
-    type: Date,
-    default: Date.now(),
+    type: Date
   },
   paymentDue: {
     type: Date,
@@ -25,6 +24,7 @@ const InvoiceSchema = mongoose.Schema({
   },
   status: {
     type: String,
+    default: "pending"
   },
   senderAddress: {
     street: {

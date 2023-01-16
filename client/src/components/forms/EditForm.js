@@ -1,7 +1,7 @@
 import Button from "../common/buttons/Button";
 import "./forms.css";
 
-const EditForm = ({ darkModeBg, darkModeInput }) => {
+const EditForm = ({ darkModeBg, darkModeInput, handleCancel }) => {
   return (
     <div className="form-container">
       <div className={`form ${darkModeBg}`}>
@@ -92,6 +92,13 @@ const EditForm = ({ darkModeBg, darkModeInput }) => {
           </label>
         </div>
         <Button className={`secondary ${darkModeInput}`}>+Add New Item</Button>
+      </div>
+
+      <div className={`action-buttons ${darkModeInput}`}>
+        <Button className="secondary" onClick={handleCancel}>
+          Cancel
+        </Button>
+        <Button className="primary">Save Changes</Button>
       </div>
     </div>
   );

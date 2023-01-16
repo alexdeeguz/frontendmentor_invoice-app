@@ -52,7 +52,6 @@ router.post("/", async (req, res) => {
   try {
     const invoice = new Invoice({
       id,
-      paymentDue: new Date(req.body.paymentDue),
       ...req.body,
     });
     await invoice.save();
