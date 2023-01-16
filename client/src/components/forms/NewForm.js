@@ -5,29 +5,64 @@ import "./forms.css";
 const NewForm = ({ darkModeBg, darkModeInput }) => {
   const [formValues, setFormValues] = useState({
     billFrom: {
-      address: "",
-      city: "",
-      zip: "",
-      country: "",
+      senderAddress: {
+        city: "",
+        street: "",
+        zip: "",
+        country: "",
+      },
     },
     billTo: {
       name: "",
       email: "",
-      address: "",
-      city: "",
-      zip: "",
-      country: "",
+      clientAddress: {
+        city: "",
+        street: "",
+        zip: "",
+        country: "",
+      },
       invoiceDate: "",
       paymentTerms: "",
       description: "",
     },
   });
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([{
+    name: "",
+    price: "",
+    quantity: "",
+    total: "",
+  }]);
 
-  const handleChange = (e) => {
-
+  const addNewItem = () => {
+    setItems([
+      ...items,
+      {
+        name: "",
+        price: "",
+        quantity: "",
+        total: "",
+      },
+    ]);
   };
+
+  const handleItemChange = (e, idx, keyName) => {
+    let newItems = []
+    items.forEach((item, itemIdx) => {
+      if (itemIdx === idx) {
+        newItems.push({
+          ...item,
+          [keyName]: e.target.value
+        })
+      } else {
+        newItems.push(item)
+      }
+    })
+    setItems(newItems)
+  };
+
+  console.log(items)
+
   return (
     <div className="form-container desktop">
       {/* <BackButton /> */}
@@ -98,28 +133,53 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
         </div>
 
         <h2>Item List</h2>
-        <div className="form__item-list">
-          <label className="form__item-1">
-            Item Name
-            <input className={darkModeInput} type="text" placeholder="Test" />
-          </label>
-          <label className="form__item-2">
-            Qty.
-            <input className={darkModeInput} type="text" placeholder="Test" />
-          </label>
-          <label className="form__item-3">
-            Price
-            <input className={darkModeInput} type="text" placeholder="Test" />
-          </label>
-          <label className="form__item-4">
-            Total
-            <input className={darkModeInput} type="text" placeholder="Test" />
-          </label>
-          <label className="form__item-5">
-            <img src="/assets/icon-delete.svg" img="delete" />
-          </label>
-        </div>
-        <Button className={`secondary ${darkModeInput}`}>+Add New Item</Button>
+        {items?.map((item, idx) => (
+          <div className="form__item-list" key={idx}>
+            <label className="form__item-1">
+              Item Name
+              <input
+                className={darkModeInput}
+                type="text"
+                placeholder="Test"
+                onChange={(e) => handleItemChange(e, idx, "name")}
+              />
+            </label>
+            <label className="form__item-2">
+              Qty.
+              <input
+                className={darkModeInput}
+                type="number"
+                step="1"
+                placeholder="Test"
+                onChange={(e) => handleItemChange(e, idx, "quantity")}
+              />
+            </label>
+            <label className="form__item-3">
+              Price
+              <input
+                className={darkModeInput}
+                type="text"
+                placeholder="Test"
+                onChange={(e) => handleItemChange(e, idx, "price")}
+              />
+            </label>
+            <label className="form__item-4">
+              Total
+              <input
+                type="text"
+                placeholder="Test"
+                readOnly
+                value={(item.price * item.quantity).toFixed(2) || 0}
+              />
+            </label>
+            <label className="form__item-5">
+              <img src="/assets/icon-delete.svg" img="delete" />
+            </label>
+          </div>
+        ))}
+        <Button className={`secondary ${darkModeInput}`} onClick={addNewItem}>
+          +Add New Item
+        </Button>
       </div>
     </div>
   );

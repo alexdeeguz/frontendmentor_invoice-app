@@ -196,6 +196,10 @@ input {
       "date terms terms terms"
       "desc desc desc desc";
   }
+
+  .form__item-list {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -251,4 +255,16 @@ input {
       border: none;
         background: #1E2139;
         color: white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

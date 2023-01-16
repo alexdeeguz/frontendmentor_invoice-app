@@ -31,7 +31,7 @@ const Drawer = ({ formType }) => {
     ) : (
       <>
         <NewForm darkModeBg={darkModeBg} darkModeInput={darkModeInput} />
-        <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
+'        <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
           <Button className="secondary" onClick={handleCancel}>
             Discard
           </Button>
@@ -39,7 +39,7 @@ const Drawer = ({ formType }) => {
             <Button className="dark">Save as Draft</Button>
             <Button className="primary">Save & Send</Button>
           </div>
-        </div>
+        </div>'
       </>
     );
   };
