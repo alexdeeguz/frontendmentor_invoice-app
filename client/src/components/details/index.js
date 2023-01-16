@@ -15,7 +15,9 @@ const Details = () => {
   const { darkMode } = useContext(ThemeContext);
   const [invoice, setInvoice] = useState("");
   useEffect(() => {
-    getDetails(params.id).then((res) => setInvoice(res.data));
+    getDetails(params.id).then((res) => {
+      setInvoice(res.data);
+    });
   }, []);
 
   const handleClickEdit = (e) => {
@@ -39,9 +41,9 @@ const Details = () => {
 
   return (
     <div>
-      <DeleteModal invoice={invoice}/>
+      <DeleteModal invoice={invoice} />
       <Overlay />
-      <Drawer formType="edit" />
+      <Drawer formType="edit" invoice={invoice} setInvoice={setInvoice} />
       <MainContent
         darkMode={darkMode}
         darkModeBg={darkModeBg}

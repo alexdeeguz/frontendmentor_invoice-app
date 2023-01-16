@@ -13,7 +13,14 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
         description,
         senderAddress,
         items,
+        paymentTerms
       } = invoice;
+      
+      const invoiceDate = invoice ? new Date(invoice.createdAt.split("T")[0].split("-").join("/")) : ""
+      const paymentDueDate = invoice
+        ? new Date(invoice.createdAt.split("T")[0].split("-").join("/"))
+        : new Date(); 
+      paymentDueDate?.setDate(paymentDueDate?.getDate() + Number(paymentTerms));
 
         const tagColor =
           status === "pending"
@@ -70,11 +77,11 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
             <div>
               <div>
                 <p>Invoice Date</p>
-                <h2>{new Date(invoice.createdAt).toDateString()}</h2>
+                <h2>{new Date(invoiceDate).toDateString()}</h2>
               </div>
               <div>
                 <p>Payment Due</p>
-                <h2>{new Date(paymentDue).toDateString()}</h2>
+                <h2>{new Date(paymentDueDate).toDateString()}</h2>
               </div>
             </div>
 

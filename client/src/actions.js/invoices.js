@@ -15,3 +15,7 @@ export const getDetails = (id) => {
 export const deleteInvoice = (data) => {
   return axios.post("/api/invoices/delete", data);
 };
+
+export const editInvoice = (data) => {
+  return axios.post("/api/invoices/edit", data)
+}

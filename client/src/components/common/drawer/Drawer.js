@@ -4,7 +4,7 @@ import Button from "../buttons/Button";
 import EditForm from "../../forms/EditForm";
 import NewForm from "../../forms/NewForm";
 
-const Drawer = ({ formType, invoices, setInvoices }) => {
+const Drawer = ({ formType, invoices, setInvoices, invoice, setInvoice }) => {
   const handleCancel = () => {
     document.getElementById("body").style.overflow = "auto";
     document.getElementById("drawer").style.transform = "translateX(-150%)";
@@ -24,6 +24,10 @@ const Drawer = ({ formType, invoices, setInvoices }) => {
           darkModeBg={darkModeBg}
           darkModeInput={darkModeInput}
           handleCancel={handleCancel}
+          invoices={invoices}
+          setInvoices={setInvoices}
+          invoice={invoice}
+          setInvoice={setInvoice}
         />
         {/* <div className={`action-buttons ${darkModeInput}`}>
           <Button className="secondary" onClick={handleCancel}>

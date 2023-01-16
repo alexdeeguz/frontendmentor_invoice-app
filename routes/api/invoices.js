@@ -32,6 +32,25 @@ router.post("/delete", async (req, res) => {
   }
 });
 
+router.post("/edit", async (req, res) => {
+  try {
+    let invoice = await Invoice.findByIdAndUpdate(req.body._id, {...req.body});
+    invoice.items = req.body.items
+    let total = 0
+    invoice.items.forEach(item => {
+      let itemTotal = item.quantity * item.price
+      item.total = itemTotal
+      total += itemTotal
+    })
+    invoice.total = total
+    await invoice.save()
+    res.json(req.body)
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 router.post("/", async (req, res) => {
   const makeId = () => {
     let res = "";
