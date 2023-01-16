@@ -46,6 +46,7 @@
   line-height: 15px;
   text-align: right;
   letter-spacing: -0.25px;
+  position: relative;
 }
 
 .invoices .filter__button img {
@@ -53,6 +54,39 @@
   margin-left: 12px;
 }
 
+.invoices .filter__dropdown {
+  /* width: 100%; */
+  /* border: 1px solid red; */
+  position: absolute;
+  bottom: -150px;
+  left: -50px;
+  z-index: 3;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 24px;
+    cursor: default;
+    padding-right: 100px;
+}
+
+#close {
+  /* border: 1px solid red; */
+  text-align: left;
+}
+
+#filter-dropdown {
+    display: none;
+}
+
+.invoices .filter__dropdown label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.invoices .filter__dropdown input {
+  margin: 10px;
+}
 .invoices .new__button {
   display: flex;
   justify-content: space-between;

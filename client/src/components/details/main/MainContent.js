@@ -15,7 +15,7 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
         items,
         paymentTerms
       } = invoice;
-      
+      console.log(invoice)
       const invoiceDate = invoice ? new Date(invoice.createdAt.split("T")[0].split("-").join("/")) : ""
       const paymentDueDate = invoice
         ? new Date(invoice.createdAt.split("T")[0].split("-").join("/"))
@@ -49,13 +49,17 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
         </div>
 
         <div className="details__action-buttons">
-          <Button onClick={handleClickEdit} className="secondary">
-            Edit
-          </Button>
+          {status !== "paid" && (
+            <Button onClick={handleClickEdit} className="secondary">
+              Edit
+            </Button>
+          )}
           <Button onClick={handleClickDelete} className="danger">
             Delete
           </Button>
-          <Button className="primary">Mark as Paid</Button>
+          {status !== "paid" && status !== "draft" && (
+            <Button className="primary">Mark as Paid</Button>
+          )}
         </div>
       </div>
 

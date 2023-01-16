@@ -10,13 +10,22 @@ import { ThemeContext } from "../../context/ThemeContext";
 
 const Invoices = () => {
   const [invoices, setInvoices] = useState([]);
+  const [filters, setFilters] = useState({
+    pending: true,
+    paid: true,
+    draft: true,
+    open: true
+  });
   const { darkMode } = useContext(ThemeContext);
   const darkModeActiveText = darkMode ? "text--dark" : null;
   const darkModeActiveBg = darkMode ? "bg--dark" : null;
   useEffect(() => {
-    getInvoices().then((res) => setInvoices(res.data));
-  }, []);
-
+    getInvoices().then((res) => {
+      setInvoices(res.data.filter(el => filters[el.status] === true))
+      // setInvoices(res.data)
+    })
+  }, [filters]);
+console.log('test')
   const handleClickNew = (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
@@ -30,7 +39,12 @@ const Invoices = () => {
       <Overlay />
       <Drawer formType="new" invoices={invoices} setInvoices={setInvoices} />
       <div className={`invoices ${darkModeActiveText}`}>
-        <InvoiceHeader handleClickNew={handleClickNew} invoices={invoices} />
+        <InvoiceHeader
+          handleClickNew={handleClickNew}
+          invoices={invoices}
+          setFilters={setFilters}
+          filters={filters}
+        />
 
         {invoices.length ? (
           <div className="invoices__main">
