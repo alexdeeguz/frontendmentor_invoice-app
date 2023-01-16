@@ -24,8 +24,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/delete", async (req, res) => {
   try {
-    await Invoice.findByIdAndDelete(req.body._id)
-    res.send(true)
+    await Invoice.findByIdAndDelete(req.body._id);
+    res.send(true);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Server error" });
@@ -34,17 +34,19 @@ router.post("/delete", async (req, res) => {
 
 router.post("/edit", async (req, res) => {
   try {
-    let invoice = await Invoice.findByIdAndUpdate(req.body._id, {...req.body});
-    invoice.items = req.body.items
-    let total = 0
-    invoice.items.forEach(item => {
-      let itemTotal = item.quantity * item.price
-      item.total = itemTotal
-      total += itemTotal
-    })
-    invoice.total = total
-    await invoice.save()
-    res.json(req.body)
+    let invoice = await Invoice.findByIdAndUpdate(req.body._id, {
+      ...req.body,
+    });
+    invoice.items = req.body.items;
+    let total = 0;
+    invoice.items.forEach((item) => {
+      let itemTotal = item.quantity * item.price;
+      item.total = itemTotal;
+      total += itemTotal;
+    });
+    invoice.total = total;
+    await invoice.save();
+    res.json(req.body);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Server error" });
@@ -72,6 +74,11 @@ router.post("/", async (req, res) => {
     const invoice = new Invoice({
       id,
       ...req.body,
+    });
+
+    invoice.items.forEach((item) => {
+      let itemTotal = item.quantity * item.price;
+      item.total = itemTotal;
     });
     await invoice.save();
     res.json(invoice);

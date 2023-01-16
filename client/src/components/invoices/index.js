@@ -30,19 +30,27 @@ const Invoices = () => {
       <Overlay />
       <Drawer formType="new" invoices={invoices} setInvoices={setInvoices} />
       <div className={`invoices ${darkModeActiveText}`}>
-        <InvoiceHeader handleClickNew={handleClickNew} />
+        <InvoiceHeader handleClickNew={handleClickNew} invoices={invoices} />
 
-        <div className="invoices__main">
-          {invoices?.map((invoice) => (
-            <InvoiceCard
-              key={invoice._id}
-              darkMode={darkMode}
-              invoice={invoice}
-              darkModeActiveText={darkModeActiveText}
-              darkModeActiveBg={darkModeActiveBg}
-            />
-          ))}
-        </div>
+        {invoices.length ? (
+          <div className="invoices__main">
+            {invoices?.map((invoice) => (
+              <InvoiceCard
+                key={invoice._id}
+                darkMode={darkMode}
+                invoice={invoice}
+                darkModeActiveText={darkModeActiveText}
+                darkModeActiveBg={darkModeActiveBg}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="invoices__empty">
+            <img src="/assets/illustration-empty.svg" />
+            <h1>There is nothing here</h1>
+            <p>Create an invoice by clicking the New button and get started</p>
+          </div>
+        )}
       </div>
     </div>
   );

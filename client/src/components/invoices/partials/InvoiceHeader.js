@@ -1,9 +1,9 @@
-const InvoiceHeader = ({ handleClickNew }) => {
+const InvoiceHeader = ({ handleClickNew, invoices }) => {
   return (
     <div className="invoices__header">
       <div className="invoices__header--left">
         <h1>Invoices</h1>
-        <p>7 invoices</p>
+        <p>{invoices?.length} invoices</p>
       </div>
 
       <div className="invoices__header--right">

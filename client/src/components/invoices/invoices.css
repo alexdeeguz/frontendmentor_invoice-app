@@ -78,6 +78,22 @@
 }
 
 /* MAIN CONTENT */
+.invoices__empty {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.invoices__empty h1, .invoices__empty p {
+  margin-top: 25px;
+}
+
+.invoices__empty img {
+  margin-top: 150px;
+}
+
 .invoices__main {
   margin-top: 32px;
 }
@@ -96,6 +112,7 @@
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 .invoice__card--item1 {
