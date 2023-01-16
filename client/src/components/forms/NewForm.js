@@ -27,12 +27,14 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
     },
   });
 
-  const [items, setItems] = useState([{
-    name: "",
-    price: "",
-    quantity: "",
-    total: "",
-  }]);
+  const [items, setItems] = useState([
+    {
+      name: "",
+      price: "",
+      quantity: "",
+      total: "",
+    },
+  ]);
 
   const addNewItem = () => {
     setItems([
@@ -47,21 +49,58 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
   };
 
   const handleItemChange = (e, idx, keyName) => {
-    let newItems = []
+    e.preventDefault();
+    let newItems = [];
     items.forEach((item, itemIdx) => {
       if (itemIdx === idx) {
         newItems.push({
           ...item,
-          [keyName]: e.target.value
-        })
+          [keyName]: e.target.value,
+        });
       } else {
-        newItems.push(item)
+        newItems.push(item);
       }
-    })
-    setItems(newItems)
+    });
+    setItems(newItems);
   };
 
-  console.log(items)
+  const handleChangeBillFrom = (e, key) => {
+    setFormValues({
+      ...formValues,
+      billFrom: {
+        senderAddress: {
+          ...formValues.billFrom.senderAddress,
+          [key]: e.target.value,
+        },
+      },
+    });
+  };
+
+  const handleChangeBillTo = (e, key) => {
+    if (key.includes("clientAddress")) {
+      const [_, clientAddressKeyName] = key.split(" ")
+      setFormValues({
+        ...formValues,
+        billTo: {
+          ...formValues.billTo,
+          clientAddress: {
+            ...formValues.billTo.clientAddress,
+            [clientAddressKeyName]: e.target.value
+          }
+        }
+      })
+    } else {
+      setFormValues({
+        ...formValues,
+        billTo: {
+          ...formValues.billTo,
+          [key]: e.target.value,
+        },
+      });
+    }
+  };
+
+  console.log(formValues);
 
   return (
     <div className="form-container desktop">
@@ -73,19 +112,35 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
         <div className="form__bill-from">
           <label className="form__item-1">
             Street Address
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillFrom(e, "street")}
+            />
           </label>
           <label className="form__item-2">
             City
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillFrom(e, "city")}
+            />
           </label>
           <label className="form__item-3">
             Zip Code
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillFrom(e, "zip")}
+            />
           </label>
           <label className="form__item-4">
             Country
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillFrom(e, "country")}
+            />
           </label>
         </div>
 
@@ -93,42 +148,78 @@ const NewForm = ({ darkModeBg, darkModeInput }) => {
         <div className="form__bill-to">
           <label className="form__item-1">
             Client's Name
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillTo(e, "name")}
+            />
           </label>
           <label className="form__item-2">
             Client's Email
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillTo(e, "email")}
+            />
           </label>
           <label className="form__item-3">
             Street Address
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillTo(e, "clientAddress street")}
+            />
           </label>
           <label className="form__item-4">
             City
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillTo(e, "clientAddress city")}
+            />
           </label>
           <label className="form__item-5">
             Zip Code
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillTo(e, "clientAddress zip")}
+            />
           </label>
           <label className="form__item-6">
             Country
-            <input className={darkModeInput} type="text" />
+            <input
+              className={darkModeInput}
+              type="text"
+              onChange={(e) => handleChangeBillTo(e, "clientAddress country")}
+            />
           </label>
           <label className="form__item-7">
             Invoice Date
-            <input className={darkModeInput} type="date" />
+            <input
+              className={darkModeInput}
+              type="date"
+              onChange={(e) => handleChangeBillTo(e, "invoiceDate")}
+            />
           </label>
           <label className="form__item-8">
             Payment Terms
-            <select className={darkModeInput}>
-              <option>Net 30 Days</option>
+            <select
+              className={darkModeInput}
+              onChange={(e) => handleChangeBillTo(e, "paymentTerms")}
+            >
+              <option value={30}>Net 30 Days</option>
             </select>
           </label>
 
           <label className="form__item-9">
             Project Description
-            <input className={darkModeInput} type="text" placeholder="Test" />
+            <input
+              className={darkModeInput}
+              type="text"
+              placeholder="Test"
+              onChange={(e) => handleChangeBillTo(e, "description")}
+            />
           </label>
         </div>
 
