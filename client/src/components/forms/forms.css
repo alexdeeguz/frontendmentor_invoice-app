@@ -202,13 +202,13 @@ input {
   }
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) { */
   .form-container {
-    height: calc(100vh - 145px);
+    height: calc(100vh - 165px);
     overflow: scroll;
     /* scrollbar-color: white; */
   }
-}
+/* } */
 
 @media screen and (min-width: 1440px) {
   .form-container {

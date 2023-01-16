@@ -167,6 +167,7 @@
   transition: transform ease-out 0.5s;
   border-radius: 0px 20px 20px 0px;
   overflow: scroll;
+  overflow: hidden;
   height: calc(100vh - 72px);
 }
 
@@ -212,7 +213,7 @@
     /* identical to box height, or 125% */
   
     letter-spacing: -0.25px;
-    margin: 25px;
+    margin: 30px;
 }
 
 .action-buttons--new {
@@ -285,9 +286,9 @@
     padding: 21px 24px;
   }
 
-    .action-buttons {
+    /* .action-buttons {
       padding: 21px 24px;
-    }
+    } */
 }
 
 @media screen and (min-width: 768px) {
@@ -356,6 +357,7 @@
     overflow: scroll;
     overflow: hidden;
     height: calc(100vh - 72px);
+    /* height: 100vh; */
   }
 
   .details__footer,
