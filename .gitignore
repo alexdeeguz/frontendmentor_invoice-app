@@ -6,3 +6,4 @@ node_modules
 .prettierignore
 package-lock.json
 .env
+.vercel
