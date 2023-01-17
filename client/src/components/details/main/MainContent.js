@@ -15,7 +15,7 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
         items,
         paymentTerms
       } = invoice;
-      console.log(invoice)
+      
       const invoiceDate = invoice ? new Date(invoice.createdAt.split("T")[0].split("-").join("/")) : ""
       const paymentDueDate = invoice
         ? new Date(invoice.createdAt.split("T")[0].split("-").join("/"))

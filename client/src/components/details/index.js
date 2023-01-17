@@ -20,6 +20,12 @@ const Details = () => {
     });
   }, []);
 
+  const fetchData = () => {
+    getDetails(params.id).then((res) => {
+      setInvoice(res.data);
+    });
+  };
+
   const handleClickEdit = (e) => {
     e.preventDefault();
     setTimeout(() => {
@@ -43,7 +49,7 @@ const Details = () => {
     <div>
       <DeleteModal invoice={invoice} />
       <Overlay />
-      <Drawer formType="edit" invoice={invoice} setInvoice={setInvoice} />
+      <Drawer formType="edit" invoice={invoice} setInvoice={setInvoice} fetchData={fetchData}/>
       <MainContent
         darkMode={darkMode}
         darkModeBg={darkModeBg}

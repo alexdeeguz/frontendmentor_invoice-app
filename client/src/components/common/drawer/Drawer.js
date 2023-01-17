@@ -4,14 +4,15 @@ import Button from "../buttons/Button";
 import EditForm from "../../forms/EditForm";
 import NewForm from "../../forms/NewForm";
 
-const Drawer = ({ formType, invoices, setInvoices, invoice, setInvoice }) => {
+const Drawer = ({ formType, invoices, setInvoices, invoice, setInvoice, fetchData }) => {
   const handleCancel = () => {
     document.getElementById("body").style.overflow = "auto";
     document.getElementById("drawer").style.transform = "translateX(-150%)";
     document.getElementById("overlay").style.display = "none";
     document.getElementById("overlay--delete").style.display =
-      document.getElementById("overlay--delete") ? "none" : null;
+    document.getElementById("overlay--delete") ? "none" : null;
     document.getElementById("modal").style.display = "none";
+    fetchData()
   };
 
   const Form = () => {

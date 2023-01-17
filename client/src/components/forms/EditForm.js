@@ -3,7 +3,13 @@ import { editInvoice } from "../../actions.js/invoices";
 import Button from "../common/buttons/Button";
 import "./forms.css";
 
-const EditForm = ({ darkModeBg, darkModeInput, handleCancel, invoice, setInvoice }) => {
+const EditForm = ({
+  darkModeBg,
+  darkModeInput,
+  handleCancel,
+  invoice,
+  setInvoice,
+}) => {
   const [updatedInvoice, setUpdatedInvoice] = useState(invoice);
   if (!invoice) return null;
 
@@ -56,6 +62,24 @@ const EditForm = ({ darkModeBg, darkModeInput, handleCancel, invoice, setInvoice
           total: "",
         },
       ],
+    });
+  };
+
+  const handleClickDeleteItem = (item) => {
+    let filtered = updatedInvoice.items.filter((el) => {
+      if (
+        item.name === el.name &&
+        item.quantity === el.quantity &&
+        item.price === el.price
+      ) {
+        return false;
+      }
+      return true;
+    });
+
+    setUpdatedInvoice({
+      ...updatedInvoice,
+      items: filtered
     });
   };
 
@@ -244,7 +268,11 @@ const EditForm = ({ darkModeBg, darkModeInput, handleCancel, invoice, setInvoice
               />
             </label>
             <label className="form__item-5">
-              <img src="/assets/icon-delete.svg" img="delete" />
+              <img
+                src="/assets/icon-delete.svg"
+                img="delete"
+                onClick={() => handleClickDeleteItem(item)}
+              />
             </label>
           </div>
         ))}
