@@ -166,7 +166,7 @@
   transform: translateX(-150%);
   transition: transform ease-out 0.5s;
   border-radius: 0rem 1.25rem 1.25rem 0rem;
-  overflow: scroll;
+  overflow-y: scroll;
   overflow: hidden;
   height: calc(100vh - 4.5rem);
 }
@@ -363,7 +363,6 @@
     transform: translateX(-150%);
     transition: transform ease-out 0.5s;
     border-radius: 0rem 1.25rem 1.25rem 0rem;
-    overflow: scroll;
     overflow: hidden;
     height: calc(100vh - 4.5rem);
     /* height: 100vh; */
@@ -391,7 +390,7 @@
 
   .details {
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 }
 
