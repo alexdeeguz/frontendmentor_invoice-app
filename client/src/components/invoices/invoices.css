@@ -296,7 +296,7 @@
     padding-left: 15.75rem;
     padding-right: 15.75rem;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   .invoices__header--left h1 {
