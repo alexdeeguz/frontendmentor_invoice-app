@@ -51,7 +51,8 @@ const EditForm = ({
     });
   };
 
-  const addNewItem = () => {
+  const addNewItem = (e) => {
+    e.preventDefault();
     setUpdatedInvoice({
       ...updatedInvoice,
       items: [
@@ -273,7 +274,7 @@ const EditForm = ({
                 type="text"
                 placeholder="Test"
                 readOnly
-                value={updatedInvoice?.items[idx].total.toFixed(2) || ""}
+                value={updatedInvoice?.items[idx].price * updatedInvoice?.items[idx].quantity}
               />
             </label>
             <label className="form__item-5">
