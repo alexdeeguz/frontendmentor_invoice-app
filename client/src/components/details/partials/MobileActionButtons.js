@@ -1,16 +1,16 @@
 import Button from "../../common/buttons/Button";
 
-const MobileActionButtons = ({ handleClickDelete, handleClickEdit, darkModeBg }) => {
-  console.log(darkModeBg)
+const MobileActionButtons = ({ invoice, handleClickDelete, handleClickEdit, darkModeBg, handleClickMarkAsPaid }) => {
+  const { status } = invoice
   return (
     <div id={darkModeBg} className={`details__action-buttons--mobile`}>
-      <Button className="secondary mobile" onClick={handleClickEdit}>
+      {status !== "paid" && <Button className="secondary mobile" onClick={handleClickEdit}>
         Edit
-      </Button>
+      </Button>}
       <Button className="danger" onClick={handleClickDelete}>
         Delete
       </Button>
-      <Button className="primary">Mark as Paid</Button>
+      {status !== "paid" && <Button className="primary" onClick={handleClickMarkAsPaid}>Mark as Paid</Button>}
     </div>
   );
 };

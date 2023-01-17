@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getDetails } from "../../actions.js/invoices";
+import { editInvoice, getDetails } from "../../actions.js/invoices";
 
 import Drawer from "../common/drawer/Drawer";
 import Overlay from "../common/drawer/Overlay";
@@ -44,6 +44,12 @@ const Details = () => {
     document.getElementById("overlay--delete").style.display = "block";
   };
 
+  const handleClickMarkAsPaid = (e) => {
+    e.preventDefault()
+    editInvoice({ ...invoice, status: "paid" })
+      .then(res => setInvoice(res.data))
+  }
+
   const darkModeBg = darkMode ? "dark" : "";
   const darkModeLightBg = darkMode ? "lightdark" : "";
 
@@ -73,11 +79,14 @@ const Details = () => {
         invoice={invoice}
         handleClickEdit={handleClickEdit}
         handleClickDelete={handleClickDelete}
+        handleClickMarkAsPaid={handleClickMarkAsPaid}
       />
       <MobileActionButtons
         darkModeBg={darkModeBg}
         handleClickDelete={handleClickDelete}
         handleClickEdit={handleClickEdit}
+        handleClickMarkAsPaid={handleClickMarkAsPaid}
+        invoice={invoice}
       />
     </div>
   );

@@ -1,39 +1,49 @@
 import Button from "../../common/buttons/Button";
 import BackButton from "../../common/buttons/BackButton";
 
-const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleClickDelete, handleClickEdit }) => {
-      const {
-        id,
-        paymentDue,
-        clientName,
-        clientEmail,
-        clientAddress,
-        status,
-        total,
-        description,
-        senderAddress,
-        items,
-        paymentTerms
-      } = invoice;
+const MainContent = ({
+  invoice,
+  darkMode,
+  darkModeBg,
+  darkModeLightBg,
+  handleClickDelete,
+  handleClickEdit,
+  handleClickMarkAsPaid,
+}) => {
+  const {
+    id,
+    paymentDue,
+    clientName,
+    clientEmail,
+    clientAddress,
+    status,
+    total,
+    description,
+    senderAddress,
+    items,
+    paymentTerms,
+  } = invoice;
 
-      const invoiceDate = invoice ? new Date(invoice?.createdAt?.split("T")[0].split("-").join("/")) : ""
-      const paymentDueDate = invoice
-        ? new Date(invoice?.createdAt?.split("T")[0].split("-").join("/"))
-        : new Date(); 
-      paymentDueDate?.setDate(paymentDueDate?.getDate() + Number(paymentTerms));
+  const invoiceDate = invoice
+    ? new Date(invoice?.createdAt?.split("T")[0].split("-").join("/"))
+    : "";
+  const paymentDueDate = invoice
+    ? new Date(invoice?.createdAt?.split("T")[0].split("-").join("/"))
+    : new Date();
+  paymentDueDate?.setDate(paymentDueDate?.getDate() + Number(paymentTerms));
 
-        const tagColor =
-          status === "pending"
-            ? "tag--pending"
-            : status === "paid"
-            ? "tag--success"
-            : `tag--neutral ${darkMode ? "tag--neutral--dark" : null}`;
-        const tagBackground =
-          status === "pending"
-            ? "tag__bg--pending"
-            : status === "paid"
-            ? "tag__bg--success"
-            : `tag__bg--neutral ${darkMode ? "tag__bg--neutral--dark" : null}`;
+  const tagColor =
+    status === "pending"
+      ? "tag--pending"
+      : status === "paid"
+      ? "tag--success"
+      : `tag--neutral ${darkMode ? "tag--neutral--dark" : null}`;
+  const tagBackground =
+    status === "pending"
+      ? "tag__bg--pending"
+      : status === "paid"
+      ? "tag__bg--success"
+      : `tag__bg--neutral ${darkMode ? "tag__bg--neutral--dark" : null}`;
 
   return (
     <div className="details">
@@ -58,7 +68,9 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
             Delete
           </Button>
           {status !== "paid" && status !== "draft" && (
-            <Button className="primary">Mark as Paid</Button>
+            <Button className="primary" onClick={handleClickMarkAsPaid}>
+              Mark as Paid
+            </Button>
           )}
         </div>
       </div>
