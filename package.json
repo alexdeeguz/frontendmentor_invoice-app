@@ -1,6 +1,8 @@
 {
+  "homepage": "https://frontendmentor-invoice-app.vercel.app",
   "name": "invoice-app",
   "version": "1.0.0",
+  "private": true,
   "description": "![Design preview for the Invoice app coding challenge](./preview.jpg)",
   "main": "index.js",
   "scripts": {

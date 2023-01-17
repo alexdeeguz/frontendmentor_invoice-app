@@ -9,7 +9,7 @@ import ThemeContextProvider from "./context/ThemeContext";
 function App() {
   return (
     <ThemeContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <div className="app">
           <Nav />
           <Routes>

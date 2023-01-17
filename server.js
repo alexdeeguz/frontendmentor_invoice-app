@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({ path: __dirname + "/.env" });
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -15,7 +19,6 @@ app.use("/api/invoices", require("./routes/api/invoices"));
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
-
 
 const path = require("path");
 if (process.env.NODE_ENV === "production") {
