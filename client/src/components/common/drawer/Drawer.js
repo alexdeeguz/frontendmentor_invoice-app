@@ -12,7 +12,7 @@ const Drawer = ({ formType, invoices, setInvoices, invoice, setInvoice, fetchDat
     document.getElementById("overlay--delete").style.display =
     document.getElementById("overlay--delete") ? "none" : null;
     document.getElementById("modal").style.display = "none";
-    fetchData()
+    // fetchData()
   };
 
   const Form = () => {

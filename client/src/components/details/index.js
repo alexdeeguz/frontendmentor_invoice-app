@@ -7,6 +7,7 @@ import Overlay from "../common/drawer/Overlay";
 import MainContent from "./main/MainContent";
 import DeleteModal from "./modal/DeleteModal";
 import MobileActionButtons from "./partials/MobileActionButtons";
+import ReactLoading from "react-loading";
 import "./details.css";
 import { ThemeContext } from "../../context/ThemeContext";
 
@@ -14,15 +15,16 @@ const Details = () => {
   const params = useParams();
   const { darkMode } = useContext(ThemeContext);
   const [invoice, setInvoice] = useState("");
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getDetails(params.id).then((res) => {
-      setInvoice(res.data);
-    });
+    fetchData();
   }, []);
 
   const fetchData = () => {
+    setLoading(true);
     getDetails(params.id).then((res) => {
       setInvoice(res.data);
+      setLoading(false);
     });
   };
 
@@ -45,11 +47,25 @@ const Details = () => {
   const darkModeBg = darkMode ? "dark" : "";
   const darkModeLightBg = darkMode ? "lightdark" : "";
 
+  if (loading)
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
+      >
+        <ReactLoading type="bubbles" color="#7C5DFA" width={100} height={100} />
+      </div>
+    );
+
   return (
     <div>
       <DeleteModal invoice={invoice} />
       <Overlay />
-      <Drawer formType="edit" invoice={invoice} setInvoice={setInvoice} fetchData={fetchData}/>
+      <Drawer
+        formType="edit"
+        invoice={invoice}
+        setInvoice={setInvoice}
+        fetchData={fetchData}
+      />
       <MainContent
         darkMode={darkMode}
         darkModeBg={darkModeBg}

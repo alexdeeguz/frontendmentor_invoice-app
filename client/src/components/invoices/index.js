@@ -5,11 +5,13 @@ import Drawer from "../common/drawer/Drawer";
 import Overlay from "../common/drawer/Overlay";
 import InvoiceCard from "./partials/InvoiceCard";
 import InvoiceHeader from "./partials/InvoiceHeader";
+import ReactLoading from "react-loading";
 import "./invoices.css";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const Invoices = () => {
   const [invoices, setInvoices] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     pending: true,
     paid: true,
@@ -19,9 +21,11 @@ const Invoices = () => {
   const { darkMode } = useContext(ThemeContext);
   const darkModeActiveText = darkMode ? "text--dark" : null;
   const darkModeActiveBg = darkMode ? "bg--dark" : null;
+
   useEffect(() => {
     getInvoices().then((res) => {
       setInvoices(res.data.filter((el) => filters[el.status] === true));
+      setLoading(false);
     });
   }, [filters]);
 
@@ -32,6 +36,19 @@ const Invoices = () => {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("body").style.overflow = "hidden";
   };
+
+  if (loading)
+    return (
+      <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
+
+        <ReactLoading
+          type="bubbles"
+          color="#7C5DFA"
+          width={100}
+          height={100}
+        />
+      </div>
+    );
 
   return (
     <div>
