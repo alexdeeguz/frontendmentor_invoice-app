@@ -27,9 +27,9 @@ const InvoiceCard = ({ invoice, darkModeActiveText, darkModeActiveBg, darkMode }
       <p className="invoice__card--item4">{clientName}</p>
       <p className="invoice__card--item3">${total.toFixed(2)}</p>
       <ul className={`invoice__card--item5 tag ${tagColor}`}>
-        <div
+        <li
           className={`invoice__card--item5-bg tag__bg tag__bg--success ${tagBackground}`}
-        ></div>
+        ></li>
         <li>{status}</li>
       </ul>
       <img src="/assets/icon-arrow-right.svg" alt="right arrow" />

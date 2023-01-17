@@ -12,7 +12,7 @@
   margin-bottom: 1.5rem;
 }
 
-.form h2 {
+.form h3 {
   margin-top: 4.125rem;
   font-weight: 700;
   font-size: 1.125rem;
@@ -21,12 +21,12 @@
   color: #777f98;
 }
 
-.form h3 {
+.form h2 {
   font-weight: 700;
   font-size: 0.75rem;
   line-height: 0.9375rem;
   letter-spacing: -0.0156rem;
-  color: #7c5dfa;
+  color: #7c5dfa !important;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 }

@@ -53,7 +53,7 @@ const MainContent = ({
         <div className="details__status">
           <p>Status</p>
           <ul className={`tag ${tagColor}`}>
-            <div className={`tag__bg ${tagBackground}`}></div>
+            <li className={`tag__bg ${tagBackground}`}></li>
             <li>{status}</li>
           </ul>
         </div>

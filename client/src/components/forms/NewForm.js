@@ -206,7 +206,7 @@ const NewForm = ({
           </p>
         )}
 
-        <h3>Bill From</h3>
+        <h2>Bill From</h2>
         <div className="form__bill-from">
           <label className="form__item-1">
             Street Address
@@ -246,7 +246,7 @@ const NewForm = ({
           </label>
         </div>
 
-        <h3>Bill To</h3>
+        <h2>Bill To</h2>
         <div className="form__bill-to">
           <label className="form__item-1">
             Client's Name
@@ -335,7 +335,7 @@ const NewForm = ({
           </label>
         </div>
 
-        <h2>Item List</h2>
+        <h3>Item List</h3>
         {newInvoice?.items.map((item, idx) => (
           <div className="form__item-list" key={idx}>
             <label className="form__item-1">
@@ -383,7 +383,7 @@ const NewForm = ({
             <label className="form__item-5">
               <img
                 src="/assets/icon-delete.svg"
-                img="delete"
+                alt="delete"
                 onClick={() => handleClickDeleteItem(item)}
               />
             </label>

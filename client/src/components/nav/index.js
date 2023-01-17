@@ -31,7 +31,7 @@ const Nav = () => {
         </div>
         <div className="nav__divider"></div>
         <div className="nav__icon">
-          <img src="/assets/image-avatar.jpg" />
+          <img src="/assets/image-avatar.jpg" alt="avatar"/>
         </div>
       </div>
     </nav>
