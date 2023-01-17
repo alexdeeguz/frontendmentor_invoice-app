@@ -9,7 +9,10 @@ const Overlay = () => {
         if (deleteOverlay) {
           deleteOverlay.style.display = "none";
         }
-        document.getElementById("modal").style.display = "none";
+        const overlay = document.getElementById("modal")
+        if (overlay) {
+          overlay.style.display = "none";
+        }
     }
   return <div onClick={handleClose} id="overlay" className="overlay"></div>;
 };

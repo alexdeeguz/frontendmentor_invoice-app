@@ -60,13 +60,21 @@
   position: absolute;
   bottom: -150px;
   left: -50px;
-  z-index: 3;
+  z-index: 1;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
     border-radius: 8px;
-    background: #ffffff;
+    /* background: #ffffff; */
     padding: 24px;
     cursor: default;
     padding-right: 100px;
+}
+
+.invoices .filter__dropdown .bg__filter--dark {
+    background: #252945;
+}
+
+.invoices .bg__filter--light {
+  background: #ffffff;
 }
 
 #close {
@@ -84,9 +92,13 @@
   align-items: center;
 }
 
+/* .invoices .filter__dropdown .bg--dark {
+  background: #1E2139 !important;
+} */
 .invoices .filter__dropdown input {
   margin: 10px;
 }
+
 .invoices .new__button {
   display: flex;
   justify-content: space-between;
@@ -296,4 +308,8 @@
 
 .bg--dark {
     background: #1E2139;
+}
+
+.bg__filter--dark {
+  background: #252945;
 }

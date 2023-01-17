@@ -1,4 +1,4 @@
-const InvoiceHeader = ({ handleClickNew, invoices, setFilters, filters }) => {
+const InvoiceHeader = ({ handleClickNew, invoices, setFilters, filters, darkMode }) => {
 
   const handleClickFilter = (e) => {
     if (e.target.type === "checkbox" || e.target.parentElement.id === "filter-dropdown") return
@@ -33,7 +33,7 @@ const InvoiceHeader = ({ handleClickNew, invoices, setFilters, filters }) => {
         >
           <p>Filter</p>
           <img src="/assets/icon-arrow-down.svg" alt="down arrow" />
-          <div id="filter-dropdown" className="filter__dropdown">
+          <div id="filter-dropdown" className={`filter__dropdown ${darkMode ? "bg__filter--dark" : "bg__filter--light"}`}>
             <label>
               <input
                 type="checkbox"

@@ -14,18 +14,17 @@ const Invoices = () => {
     pending: true,
     paid: true,
     draft: true,
-    open: true
+    open: true,
   });
   const { darkMode } = useContext(ThemeContext);
   const darkModeActiveText = darkMode ? "text--dark" : null;
   const darkModeActiveBg = darkMode ? "bg--dark" : null;
   useEffect(() => {
     getInvoices().then((res) => {
-      setInvoices(res.data.filter(el => filters[el.status] === true))
-      // setInvoices(res.data)
-    })
+      setInvoices(res.data.filter((el) => filters[el.status] === true));
+    });
   }, [filters]);
-console.log('test')
+
   const handleClickNew = (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
@@ -44,6 +43,7 @@ console.log('test')
           invoices={invoices}
           setFilters={setFilters}
           filters={filters}
+          darkMode={darkMode}
         />
 
         {invoices.length ? (
