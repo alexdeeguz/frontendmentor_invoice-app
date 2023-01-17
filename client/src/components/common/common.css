@@ -20,8 +20,8 @@ button {
 } */
 
 .form-container .back-btn {
-    padding-top: 32px;
-    padding-left: 24px;
+    padding-top: 2rem;
+    padding-left: 1.5rem;
     background-color: #ffffff;
 }
 
@@ -32,16 +32,16 @@ button {
 cursor: pointer;
     /* TEXT */
     font-weight: 700;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: -0.25px;
+    font-size: .75rem;
+    line-height: .9375rem;
+    letter-spacing: -0.0156rem;
 }
 
 .back-btn>img {
-    margin-right: 24px;
+    margin-right: 1.5rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 48rem) {
     .form-container .back-btn {
         display: none;
         }

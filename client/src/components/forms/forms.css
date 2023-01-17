@@ -1,63 +1,63 @@
 .form {
   background-color: #ffffff;
-  padding: 24px;
+  padding: 1.5rem;
 }
 
 .form h1 {
   font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: -0.5px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.0313rem;
   color: #0c0e16;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .form h2 {
-  margin-top: 66px;
+  margin-top: 4.125rem;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 32px;
-  letter-spacing: -0.375px;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  letter-spacing: -0.0234rem;
   color: #777f98;
 }
 
 .form h3 {
   font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: -0.25px;
+  font-size: .75rem;
+  line-height: .9375rem;
+  letter-spacing: -0.0156rem;
   color: #7c5dfa;
-  margin-bottom: 24px;
-  margin-top: 24px;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 input[type="text"],
 input[type="date"],
 select {
   width: 100%;
-  padding: 17px 20px;
-  margin: 8px 0;
+  padding: 1.0625rem 1.25rem;
+  margin: .5rem 0;
   box-sizing: border-box;
-  border: 1px solid #dfe3fa;
-  border-radius: 4px;
+  border: .0625rem solid #dfe3fa;
+  border-radius: .25rem;
   background-color: transparent;
 }
 
 input[type="number"] {
   width: 90%;
-  padding: 17px 20px;
-  margin: 8px 0;
+  padding: 1.0625rem 1.25rem;
+  margin: .5rem 0;
   box-sizing: border-box;
-  border: 1px solid #dfe3fa;
-  border-radius: 4px;
+  border: .0625rem solid #dfe3fa;
+  border-radius: .25rem;
 }
 
 label,
 input {
   font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: -0.25px;
+  font-size: .75rem;
+  line-height: .9375rem;
+  letter-spacing: -0.0156rem;
   color: #7e88c3;
   display: block;
 }
@@ -69,7 +69,7 @@ input {
 /* BILL FROM */
 .form__bill-from {
   display: grid;
-  gap: 23px;
+  gap: 1.4375rem;
   grid-template-areas:
     "address adress"
     "city zip"
@@ -95,7 +95,7 @@ input {
 /* BILL TO */
 .form__bill-to {
   display: grid;
-  gap: 23px;
+  gap: 1.4375rem;
   grid-template-areas:
     "name name"
     "email email"
@@ -140,7 +140,7 @@ input {
 
 .form__item-list {
   display: grid;
-  gap: 16px;
+  gap: 1rem;
   grid-template-areas:
     "name name name name"
     "qty price total trash";
@@ -177,10 +177,10 @@ input {
 
 .form button {
   width: 100%;
-  /* margin-top: 48px; */
+  /* margin-top: 3rem; */
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 48rem) {
   .form__bill-from {
     grid-template-areas:
       "address address address"
@@ -202,37 +202,37 @@ input {
   }
 }
 
-/* @media screen and (min-width: 768px) { */
+/* @media screen and (min-width: 48rem) { */
   .form-container {
-    height: calc(100vh - 165px);
+    height: calc(100vh - 10.3125rem);
     overflow: scroll;
     /* scrollbar-color: white; */
   }
 /* } */
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 90rem) {
   .form-container {
-    /* border: 1px solid red; */
+    /* border: .0625rem solid red; */
     /* position: absolute; */
-    height: calc(100vh - 90px);
+    height: calc(100vh - 5.625rem);
     overflow: scroll;
   }
 
   .form h1 {
     font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: -0.5px;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.0313rem;
     color: #0c0e16;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
 
   .form h2 {
-    margin-top: 66px;
+    margin-top: 4.125rem;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 32px;
-    letter-spacing: -0.375px;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    letter-spacing: -0.0234rem;
     color: #777f98;
   }
 }
@@ -270,5 +270,5 @@ input[type=number] {
 }
 
 #add {
-  margin-top: 10px;
+  margin-top: .625rem;
 }
