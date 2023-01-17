@@ -8,9 +8,9 @@ const NewForm = ({
   darkModeInput,
   handleCancel,
   setInvoices,
-  invoices
+  invoices,
 }) => {
-
+  const [error, setError] = useState(null);
   const [newInvoice, setNewInvoice] = useState({
     clientAddress: {
       city: "",
@@ -29,12 +29,14 @@ const NewForm = ({
     clientEmail: "",
     createdAt: "",
     paymentTerms: 15,
-    items: [{
-      name: "",
-      quantity: "",
-      price: "",
-      total: 0
-    }]
+    items: [
+      {
+        name: "",
+        quantity: "",
+        price: "",
+        total: 0,
+      },
+    ],
   });
 
   // if (!invoice) return null;
@@ -65,7 +67,7 @@ const NewForm = ({
         newItems.push({
           ...item,
           [keyName]: e.target.value,
-          total: Number(item.price) * Number(item.quantity) || 0
+          total: Number(item.price) * Number(item.quantity) || 0,
         });
       } else {
         newItems.push(item);
@@ -84,8 +86,8 @@ const NewForm = ({
         ...newInvoice.items,
         {
           name: "",
-          price: 0,
-          quantity: 0,
+          price: "",
+          quantity: "",
           total: 0,
         },
       ],
@@ -110,17 +112,65 @@ const NewForm = ({
     });
   };
 
+  const validInputs = () => {
+    const { city, country, zip, street } = newInvoice.clientAddress;
+    if (city === "" || country === "" || zip === "" || street === "") {
+      setError("All fields are required before sending an invoice");
+      return false;
+    }
+
+    const {
+      city: senderCity,
+      country: senderCountry,
+      zip: senderZip,
+      street: senderStreet,
+    } = newInvoice.senderAddress;
+    if (
+      senderCity === "" ||
+      senderCountry === "" ||
+      senderZip === "" ||
+      senderStreet === ""
+    ) {
+      setError("All fields are required before sending an invoice");
+      return false;
+    }
+
+    const { description, clientName, clientEmail, createdAt } = newInvoice;
+    if (
+      description === "" ||
+      clientName === "" ||
+      clientEmail === "" ||
+      createdAt === ""
+    ) {
+      setError("All fields are required before sending an invoice");
+      return false;
+    }
+
+    const { items } = newInvoice;
+    if (!items.length) return false;
+    items.forEach((item) => {
+      if (item.name === "" || item.price === "" || item.quantity === "") {
+        setError("All fields are required before sending an invoice");
+        return false;
+      }
+    });
+    return true;
+  };
+
   const handleClickSaveAndSend = (e) => {
     e.preventDefault();
-    let total = 0
-    newInvoice.items.forEach(item => {
-      total += Number(item.price) * Number(item.quantity)
-    })
+    if (!validInputs()) return;
+    let total = 0;
+    newInvoice.items.forEach((item) => {
+      total += Number(item.price) * Number(item.quantity);
+    });
 
-    const paymentDue = new Date(newInvoice.createdAt.split("T")[0].split("-").join("/"))
-    paymentDue.setDate(paymentDue.getDate() + Number(newInvoice.paymentTerms))
+    const paymentDue = new Date(
+      newInvoice.createdAt.split("T")[0].split("-").join("/")
+    );
+    paymentDue.setDate(paymentDue.getDate() + Number(newInvoice.paymentTerms));
 
-    createInvoice({...newInvoice, total, paymentDue}).then((res) => {
+    createInvoice({ ...newInvoice, total, paymentDue }).then((res) => {
       setInvoices([...invoices, res.data]);
       handleCancel();
     });
@@ -138,16 +188,24 @@ const NewForm = ({
     );
     paymentDue.setDate(paymentDue.getDate() + Number(newInvoice.paymentTerms));
 
-    createInvoice({ ...newInvoice, total, paymentDue, status: "draft" }).then((res) => {
-      setInvoices([...invoices, res.data]);
-      handleCancel();
-    });
-  }
+    createInvoice({ ...newInvoice, total, paymentDue, status: "draft" }).then(
+      (res) => {
+        setInvoices([...invoices, res.data]);
+        handleCancel();
+      }
+    );
+  };
 
   return (
-    <div className="form-container">
+    <form className="form-container" onSubmit={handleClickSaveAndSend}>
       <div className={`form ${darkModeBg}`}>
         <h1>New Invoice</h1>
+        {error && (
+          <p style={{ color: "red", padding: "20px", textAlign: "center" }}>
+            {error}
+          </p>
+        )}
+
         <h3>Bill From</h3>
         <div className="form__bill-from">
           <label className="form__item-1">
@@ -317,7 +375,9 @@ const NewForm = ({
                 type="text"
                 placeholder="Test"
                 readOnly
-                value={(newInvoice?.items[idx].price * newInvoice?.items[idx].quantity).toFixed(2)}
+                value={(
+                  newInvoice?.items[idx].price * newInvoice?.items[idx].quantity
+                ).toFixed(2)}
               />
             </label>
             <label className="form__item-5">
@@ -332,6 +392,12 @@ const NewForm = ({
         <Button className={`secondary ${darkModeInput}`} onClick={addNewItem}>
           +Add New Item
         </Button>
+
+        {error && (
+          <p style={{ color: "red", padding: "20px", textAlign: "center" }}>
+            {error}
+          </p>
+        )}
       </div>
 
       <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
@@ -345,13 +411,19 @@ const NewForm = ({
           Discard
         </Button>
         <div>
-          <Button className="dark" onClick={handleClickSaveDraft}>Save as Draft</Button>
-          <Button className="primary" onClick={handleClickSaveAndSend}>
+          <Button className="dark" onClick={handleClickSaveDraft}>
+            Save as Draft
+          </Button>
+          <Button
+            type="submit"
+            className="primary"
+            onClick={handleClickSaveAndSend}
+          >
             Save & Send
           </Button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
