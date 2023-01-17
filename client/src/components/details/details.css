@@ -203,17 +203,18 @@
   /* padding: 25px; */
 }
 
-.action-buttons > div > button, .action-buttons button {
+.action-buttons > div > button,
+.action-buttons button {
   width: 128px;
   height: 48px;
   /* border: 1px solid red; */
   font-weight: 700;
-    font-size: 10px !important;
-    line-height: 15px;
-    /* identical to box height, or 125% */
-  
-    letter-spacing: -0.25px;
-    margin: 30px;
+  font-size: 10px !important;
+  line-height: 15px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: -0.25px;
+  margin: 30px;
 }
 
 .action-buttons--new {
@@ -221,9 +222,9 @@
 }
 
 .drawer > .xdark {
-      border: none;
-      background: #141625;
-      color: white;
+  border: none;
+  background: #141625;
+  color: white;
 }
 
 /* .drawer > .action-buttons--new {
@@ -270,7 +271,15 @@
 .modal .action-buttons {
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
+
+#delete-action-buttons button {
+  padding: 0;
+  margin: 0;
+  border: 1px solid red;
+}
+
 @media screen and (max-width: 767px) {
   .modal h1 {
     font-size: 20px;
@@ -286,7 +295,7 @@
     padding: 21px 24px;
   }
 
-    /* .action-buttons {
+  /* .action-buttons {
       padding: 21px 24px;
     } */
 }
@@ -386,13 +395,13 @@
   }
 }
 
-.details .dark, .main .dark, #dark {
-  background: #1E2139;
+.details .dark,
+.main .dark,
+#dark {
+  background: #1e2139;
   color: #ffffff;
 }
 
 .details .lightdark {
   background: #252945;
 }
-
-

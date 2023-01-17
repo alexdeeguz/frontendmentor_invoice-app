@@ -24,7 +24,7 @@ const DeleteModal = ({ invoice }) => {
           Are you sure you want to delete invoice #XM9141? This action cannot be
           undone.
         </p>
-        <div className="action-buttons">
+        <div id="delete-action-buttons" className="action-buttons">
           <Button className="secondary" onClick={handleClickCancel}>
             Cancel
           </Button>
