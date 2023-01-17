@@ -31,6 +31,20 @@
   color: #888eb0;
 }
 
+.invoices__header--left > p:last-child {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .invoices__header--left>p:last-child {
+      display: block;
+    }
+
+    .invoices__header--left > #invoice__header-text--mobile {
+      display: none;
+    }
+}
+
 .invoices__header--right {
   display: flex;
 }
@@ -239,12 +253,6 @@
   mix-blend-mode: normal;
   opacity: 0.06;
   border-radius: 6px;
-}
-
-@media screen and (max-width: 767px) {
-  .invoices .new__button--desktop {
-    /* display: none; */
-  }
 }
 
 .invoice__card img {

@@ -22,7 +22,8 @@ const InvoiceHeader = ({ handleClickNew, invoices, setFilters, filters, darkMode
     <div className="invoices__header">
       <div className="invoices__header--left">
         <h1>Invoices</h1>
-        <p>{invoices?.length} invoices</p>
+        <p id="invoice__header-text--mobile">{invoices?.length} invoices</p>
+        <p id="invoice__header-text--desktop">There are {invoices?.length} total invoices</p>
       </div>
 
       <div className="invoices__header--right">
