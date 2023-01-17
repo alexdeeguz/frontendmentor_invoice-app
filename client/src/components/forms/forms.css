@@ -239,7 +239,7 @@ input {
 
 .xdark {
     border: none;
-      background: #1E2139;
+      background: #1E2139 !important;
       color: white;
 }
 

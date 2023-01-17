@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 const InvoiceCard = ({ invoice, darkModeActiveText, darkModeActiveBg, darkMode }) => {
   const navigate = useNavigate();
-
+  // console.log(invoice)
   const { id, paymentDue, clientName, status, total } = invoice;
+
   const tagColor =
     status === "pending"
       ? "tag--pending"

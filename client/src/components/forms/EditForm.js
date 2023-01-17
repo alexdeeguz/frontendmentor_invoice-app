@@ -10,6 +10,7 @@ const EditForm = ({
   invoice,
   setInvoice,
 }) => {
+
   const [updatedInvoice, setUpdatedInvoice] = useState(invoice);
   if (!invoice) return null;
 
@@ -91,6 +92,14 @@ const EditForm = ({
     });
   };
 
+    const handleClickSaveAndSend = (e) => {
+      e.preventDefault();
+      editInvoice({ ...updatedInvoice, status: "pending" }).then((res) => {
+        setInvoice(res.data);
+        handleCancel();
+      });
+    };
+
   return (
     <div className="form-container">
       <div className={`form ${darkModeBg}`}>
@@ -102,7 +111,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.senderAddress.street}
+              value={updatedInvoice?.senderAddress.street || ""}
               onChange={(e) => handleChangeEdit(e, "senderAddress", "street")}
             />
           </label>
@@ -111,7 +120,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.senderAddress.city}
+              value={updatedInvoice?.senderAddress.city || ""}
               onChange={(e) => handleChangeEdit(e, "senderAddress", "city")}
             />
           </label>
@@ -120,7 +129,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.senderAddress.zip}
+              value={updatedInvoice?.senderAddress.zip || ""}
               onChange={(e) => handleChangeEdit(e, "senderAddress", "zip")}
             />
           </label>
@@ -129,7 +138,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.senderAddress.country}
+              value={updatedInvoice?.senderAddress.country || ""}
               onChange={(e) => handleChangeEdit(e, "senderAddress", "country")}
             />
           </label>
@@ -142,7 +151,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.clientName}
+              value={updatedInvoice?.clientName || ""}
               onChange={(e) => handleChangeEdit(e, null, "clientName")}
             />
           </label>
@@ -151,7 +160,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.clientEmail}
+              value={updatedInvoice?.clientEmail || ""}
               onChange={(e) => handleChangeEdit(e, null, "clientEmail")}
             />
           </label>
@@ -160,7 +169,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.clientAddress.street}
+              value={updatedInvoice?.clientAddress.street || ""}
               onChange={(e) => handleChangeEdit(e, "clientAddress", "street")}
             />
           </label>
@@ -169,7 +178,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.clientAddress.city}
+              value={updatedInvoice?.clientAddress.city || ""}
               onChange={(e) => handleChangeEdit(e, "clientAddress", "city")}
             />
           </label>
@@ -178,7 +187,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.clientAddress.zip}
+              value={updatedInvoice?.clientAddress.zip || ""}
               onChange={(e) => handleChangeEdit(e, "clientAddress", "zip")}
             />
           </label>
@@ -187,7 +196,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="text"
-              value={updatedInvoice?.clientAddress.country}
+              value={updatedInvoice?.clientAddress.country || ""}
               onChange={(e) => handleChangeEdit(e, "clientAddress", "country")}
             />
           </label>
@@ -196,7 +205,7 @@ const EditForm = ({
             <input
               className={darkModeInput}
               type="date"
-              value={updatedInvoice?.createdAt.split("T")[0]}
+              value={updatedInvoice?.createdAt?.split("T")[0] || ""}
               onChange={(e) => handleChangeEdit(e, null, "createdAt")}
             />
           </label>
@@ -204,7 +213,7 @@ const EditForm = ({
             Payment Terms
             <select
               className={darkModeInput}
-              value={15}
+              value={updatedInvoice?.paymentTerms || ""}
               onChange={(e) => handleChangeEdit(e, null, "paymentTerms")}
             >
               <option value={15}>Net 15 Days</option>
@@ -218,7 +227,7 @@ const EditForm = ({
               className={darkModeInput}
               type="text"
               placeholder="Test"
-              value={updatedInvoice?.description}
+              value={updatedInvoice?.description || ""}
               onChange={(e) => handleChangeEdit(e, null, "description")}
             />
           </label>
@@ -233,7 +242,7 @@ const EditForm = ({
                 className={darkModeInput}
                 type="text"
                 placeholder="Test"
-                value={updatedInvoice?.items[idx].name}
+                value={updatedInvoice?.items[idx].name || ""}
                 onChange={(e) => handleItemChange(e, idx, "name")}
               />
             </label>
@@ -243,7 +252,7 @@ const EditForm = ({
                 className={darkModeInput}
                 type="text"
                 placeholder="Test"
-                value={updatedInvoice?.items[idx].quantity}
+                value={updatedInvoice?.items[idx].quantity || ""}
                 onChange={(e) => handleItemChange(e, idx, "quantity")}
               />
             </label>
@@ -253,7 +262,7 @@ const EditForm = ({
                 className={darkModeInput}
                 type="text"
                 placeholder="Test"
-                value={updatedInvoice?.items[idx].price}
+                value={updatedInvoice?.items[idx].price || ""}
                 onChange={(e) => handleItemChange(e, idx, "price")}
               />
             </label>
@@ -264,7 +273,7 @@ const EditForm = ({
                 type="text"
                 placeholder="Test"
                 readOnly
-                value={updatedInvoice?.items[idx].total.toFixed(2)}
+                value={updatedInvoice?.items[idx].total.toFixed(2) || ""}
               />
             </label>
             <label className="form__item-5">
@@ -285,9 +294,16 @@ const EditForm = ({
         <Button className="secondary" onClick={handleCancel}>
           Cancel
         </Button>
-        <Button className="primary" onClick={handleClickSave}>
-          Save Changes
-        </Button>
+        <div>
+          <Button className={invoice?.status === "draft" ? "dark" : "primary"} onClick={handleClickSave}>
+            Save Changes
+          </Button>
+          {invoice?.status === "draft" && (
+            <Button className="primary" onClick={handleClickSaveAndSend}>
+              Save & Send
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

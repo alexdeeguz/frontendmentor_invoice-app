@@ -15,10 +15,10 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
         items,
         paymentTerms
       } = invoice;
-      
-      const invoiceDate = invoice ? new Date(invoice.createdAt.split("T")[0].split("-").join("/")) : ""
+
+      const invoiceDate = invoice ? new Date(invoice?.createdAt?.split("T")[0].split("-").join("/")) : ""
       const paymentDueDate = invoice
-        ? new Date(invoice.createdAt.split("T")[0].split("-").join("/"))
+        ? new Date(invoice?.createdAt?.split("T")[0].split("-").join("/"))
         : new Date(); 
       paymentDueDate?.setDate(paymentDueDate?.getDate() + Number(paymentTerms));
 
@@ -120,10 +120,10 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
           <tbody>
             {items?.map((item, idx) => (
               <tr key={idx}>
-                <td>{item.name}</td>
-                <td>{item.quantity}</td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>${item.total.toFixed(2)}</td>
+                <td>{item?.name}</td>
+                <td>{item?.quantity}</td>
+                <td>${item?.price?.toFixed(2)}</td>
+                <td>${item?.total?.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
@@ -137,12 +137,12 @@ const MainContent = ({ invoice, darkMode, darkModeBg, darkModeLightBg, handleCli
           {items?.map((item, idx) => (
             <div className="details__total--item" key={idx}>
               <div>
-                <h3>{item.name}</h3>
+                <h3>{item?.name}</h3>
                 <p>
-                  {item.quantity} x ${item.price.toFixed(2)}
+                  {item?.quantity} x ${item?.price?.toFixed(2)}
                 </p>
               </div>
-              <p>${item.total.toFixed(2)}</p>
+              <p>${item?.total?.toFixed(2)}</p>
             </div>
           ))}
           <div className="details__grand-total">

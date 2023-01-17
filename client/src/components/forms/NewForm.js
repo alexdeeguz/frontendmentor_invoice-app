@@ -3,142 +3,151 @@ import { createInvoice } from "../../actions.js/invoices";
 import Button from "../common/buttons/Button";
 import "./forms.css";
 
-const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoices }) => {
-  const [formValues, setFormValues] = useState({
-    billFrom: {
-      senderAddress: {
-        city: "",
-        street: "",
-        zip: "",
-        country: "",
-      },
+const NewForm = ({
+  darkModeBg,
+  darkModeInput,
+  handleCancel,
+  setInvoices,
+  invoices
+}) => {
+
+  const [newInvoice, setNewInvoice] = useState({
+    clientAddress: {
+      city: "",
+      street: "",
+      zip: "",
+      country: "",
     },
-    billTo: {
+    senderAddress: {
+      city: "",
+      street: "",
+      zip: "",
+      country: "",
+    },
+    description: "",
+    clientName: "",
+    clientEmail: "",
+    createdAt: "",
+    paymentTerms: 15,
+    items: [{
       name: "",
-      email: "",
-      clientAddress: {
-        city: "",
-        street: "",
-        zip: "",
-        country: "",
-      },
-      invoiceDate: "",
-      paymentTerms: 15,
-      description: "",
-    },
+      quantity: "",
+      price: "",
+      total: 0
+    }]
   });
 
-  const [items, setItems] = useState([
-    {
-      name: "",
-      price: "",
-      quantity: "",
-      total: "",
-    },
-  ]);
+  // if (!invoice) return null;
 
-  const addNewItem = () => {
-    setItems([
-      ...items,
-      {
-        name: "",
-        price: "",
-        quantity: "",
-        total: "",
-      },
-    ]);
+  const handleChangeEdit = (e, group, keyName) => {
+    if (["clientAddress", "senderAddress"].includes(group)) {
+      setNewInvoice({
+        ...newInvoice,
+        [group]: {
+          ...newInvoice[group],
+          [keyName]: e.target.value,
+        },
+      });
+    } else {
+      setNewInvoice({
+        ...newInvoice,
+        [keyName]: e.target.value,
+      });
+    }
   };
 
   const handleItemChange = (e, idx, keyName) => {
     e.preventDefault();
+
     let newItems = [];
-    items.forEach((item, itemIdx) => {
+    newInvoice.items.forEach((item, itemIdx) => {
       if (itemIdx === idx) {
         newItems.push({
           ...item,
           [keyName]: e.target.value,
-          total: Number(item.price) * Number(item.quantity)
+          total: Number(item.price) * Number(item.quantity) || 0
         });
       } else {
         newItems.push(item);
       }
     });
-    setItems(newItems);
-  };
-
-  const handleChangeBillFrom = (e, key) => {
-    setFormValues({
-      ...formValues,
-      billFrom: {
-        senderAddress: {
-          ...formValues.billFrom.senderAddress,
-          [key]: e.target.value,
-        },
-      },
+    setNewInvoice({
+      ...newInvoice,
+      items: newItems,
     });
   };
 
-  const handleChangeBillTo = (e, key) => {
-    if (key.includes("clientAddress")) {
-      const [_, clientAddressKeyName] = key.split(" ");
-      setFormValues({
-        ...formValues,
-        billTo: {
-          ...formValues.billTo,
-          clientAddress: {
-            ...formValues.billTo.clientAddress,
-            [clientAddressKeyName]: e.target.value,
-          },
+  const addNewItem = () => {
+    setNewInvoice({
+      ...newInvoice,
+      items: [
+        ...newInvoice.items,
+        {
+          name: "",
+          price: 0,
+          quantity: 0,
+          total: 0,
         },
-      });
-    } else {
-      setFormValues({
-        ...formValues,
-        billTo: {
-          ...formValues.billTo,
-          [key]: e.target.value,
-        },
-      });
-    }
+      ],
+    });
   };
 
-  const handleClickSaveAndSend = () => {
-    const { billFrom: { senderAddress }, billTo: { clientAddress, description, email, invoiceDate, name, paymentTerms } } = formValues
-    const createdAt = new Date(invoiceDate.split("-").join("/"))
-    const paymentDue = new Date(invoiceDate.split("-").join("/"))
-    paymentDue.setDate(paymentDue.getDate() + Number(paymentTerms))
+  const handleClickDeleteItem = (item) => {
+    let filtered = newInvoice.items.filter((el) => {
+      if (
+        item.name === el.name &&
+        item.quantity === el.quantity &&
+        item.price === el.price
+      ) {
+        return false;
+      }
+      return true;
+    });
 
+    setNewInvoice({
+      ...newInvoice,
+      items: filtered,
+    });
+  };
+
+  const handleClickSaveAndSend = (e) => {
+    e.preventDefault();
     let total = 0
-    items.forEach(item => {
-      let itemTotal = (Number(item.quantity) * Number(item.price))
-      total += Number(itemTotal)
+    newInvoice.items.forEach(item => {
+      total += Number(item.price) * Number(item.quantity)
     })
-    const data = {
-      createdAt,
-      paymentDue, 
-      description,
-      paymentTerms,
-      clientName: name,
-      clientEmail: email,
-      senderAddress,
-      clientAddress,
-      items,
-      total
-    }
 
-    createInvoice(data)
-      .then((res) => {
-        setInvoices([...invoices, res.data])
-        handleCancel()
-      })
+    const paymentDue = new Date(newInvoice.createdAt.split("T")[0].split("-").join("/"))
+    paymentDue.setDate(paymentDue.getDate() + Number(newInvoice.paymentTerms))
+
+    createInvoice({...newInvoice, total, paymentDue}).then((res) => {
+      setInvoices([...invoices, res.data]);
+      handleCancel();
+    });
+  };
+
+  const handleClickSaveDraft = (e) => {
+    e.preventDefault();
+    let total = 0;
+    newInvoice.items.forEach((item) => {
+      total += Number(item.price) * Number(item.quantity);
+    });
+
+    const paymentDue = new Date(
+      newInvoice.createdAt.split("T")[0].split("-").join("/")
+    );
+    paymentDue.setDate(paymentDue.getDate() + Number(newInvoice.paymentTerms));
+
+    createInvoice({ ...newInvoice, total, paymentDue, status: "draft" }).then((res) => {
+      setInvoices([...invoices, res.data]);
+      handleCancel();
+    });
   }
 
   return (
-    <div className="form-container desktop">
-      {/* <BackButton /> */}
-
+    <div className="form-container">
       <div className={`form ${darkModeBg}`}>
-        <h1 className="">New Invoice</h1>
+        <h1>New Invoice</h1>
         <h3>Bill From</h3>
         <div className="form__bill-from">
           <label className="form__item-1">
@@ -146,7 +155,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillFrom(e, "street")}
+              value={newInvoice?.senderAddress.street}
+              onChange={(e) => handleChangeEdit(e, "senderAddress", "street")}
             />
           </label>
           <label className="form__item-2">
@@ -154,7 +164,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillFrom(e, "city")}
+              value={newInvoice?.senderAddress.city}
+              onChange={(e) => handleChangeEdit(e, "senderAddress", "city")}
             />
           </label>
           <label className="form__item-3">
@@ -162,7 +173,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillFrom(e, "zip")}
+              value={newInvoice?.senderAddress.zip}
+              onChange={(e) => handleChangeEdit(e, "senderAddress", "zip")}
             />
           </label>
           <label className="form__item-4">
@@ -170,7 +182,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillFrom(e, "country")}
+              value={newInvoice?.senderAddress.country}
+              onChange={(e) => handleChangeEdit(e, "senderAddress", "country")}
             />
           </label>
         </div>
@@ -182,7 +195,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillTo(e, "name")}
+              value={newInvoice?.clientName}
+              onChange={(e) => handleChangeEdit(e, null, "clientName")}
             />
           </label>
           <label className="form__item-2">
@@ -190,7 +204,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillTo(e, "email")}
+              value={newInvoice?.clientEmail}
+              onChange={(e) => handleChangeEdit(e, null, "clientEmail")}
             />
           </label>
           <label className="form__item-3">
@@ -198,7 +213,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillTo(e, "clientAddress street")}
+              value={newInvoice?.clientAddress.street}
+              onChange={(e) => handleChangeEdit(e, "clientAddress", "street")}
             />
           </label>
           <label className="form__item-4">
@@ -206,7 +222,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillTo(e, "clientAddress city")}
+              value={newInvoice?.clientAddress.city}
+              onChange={(e) => handleChangeEdit(e, "clientAddress", "city")}
             />
           </label>
           <label className="form__item-5">
@@ -214,7 +231,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillTo(e, "clientAddress zip")}
+              value={newInvoice?.clientAddress.zip}
+              onChange={(e) => handleChangeEdit(e, "clientAddress", "zip")}
             />
           </label>
           <label className="form__item-6">
@@ -222,7 +240,8 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="text"
-              onChange={(e) => handleChangeBillTo(e, "clientAddress country")}
+              value={newInvoice?.clientAddress.country}
+              onChange={(e) => handleChangeEdit(e, "clientAddress", "country")}
             />
           </label>
           <label className="form__item-7">
@@ -230,16 +249,16 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
             <input
               className={darkModeInput}
               type="date"
-              onChange={(e) => handleChangeBillTo(e, "invoiceDate")}
-              value={formValues.billTo.invoiceDate}
+              value={newInvoice?.createdAt}
+              onChange={(e) => handleChangeEdit(e, null, "createdAt")}
             />
           </label>
           <label className="form__item-8">
             Payment Terms
             <select
               className={darkModeInput}
-              onChange={(e) => handleChangeBillTo(e, "paymentTerms")}
-              value={formValues.billTo.paymentTerms}
+              value={newInvoice?.paymentTerms}
+              onChange={(e) => handleChangeEdit(e, null, "paymentTerms")}
             >
               <option value={15}>Net 15 Days</option>
               <option value={30}>Net 30 Days</option>
@@ -252,13 +271,14 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
               className={darkModeInput}
               type="text"
               placeholder="Test"
-              onChange={(e) => handleChangeBillTo(e, "description")}
+              value={newInvoice?.description}
+              onChange={(e) => handleChangeEdit(e, null, "description")}
             />
           </label>
         </div>
 
         <h2>Item List</h2>
-        {items?.map((item, idx) => (
+        {newInvoice?.items.map((item, idx) => (
           <div className="form__item-list" key={idx}>
             <label className="form__item-1">
               Item Name
@@ -266,6 +286,7 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
                 className={darkModeInput}
                 type="text"
                 placeholder="Test"
+                value={newInvoice?.items[idx].name}
                 onChange={(e) => handleItemChange(e, idx, "name")}
               />
             </label>
@@ -273,9 +294,9 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
               Qty.
               <input
                 className={darkModeInput}
-                type="number"
-                step="1"
-                placeholder="Test"
+                type="text"
+                placeholder="0"
+                value={newInvoice?.items[idx].quantity}
                 onChange={(e) => handleItemChange(e, idx, "quantity")}
               />
             </label>
@@ -284,42 +305,50 @@ const NewForm = ({ darkModeBg, darkModeInput, handleCancel, setInvoices, invoice
               <input
                 className={darkModeInput}
                 type="text"
-                placeholder="Test"
+                placeholder="0"
+                value={newInvoice?.items[idx].price}
                 onChange={(e) => handleItemChange(e, idx, "price")}
               />
             </label>
             <label className="form__item-4">
               Total
               <input
+                className={darkModeInput}
                 type="text"
                 placeholder="Test"
                 readOnly
-                value={(item.price * item.quantity).toFixed(2) || 0}
+                value={(newInvoice?.items[idx].price * newInvoice?.items[idx].quantity).toFixed(2)}
               />
             </label>
             <label className="form__item-5">
-              <img src="/assets/icon-delete.svg" img="delete" />
+              <img
+                src="/assets/icon-delete.svg"
+                img="delete"
+                onClick={() => handleClickDeleteItem(item)}
+              />
             </label>
           </div>
         ))}
-        <Button
-          id="add"
-          className={`secondary ${darkModeInput}`}
-          onClick={addNewItem}
-        >
+        <Button className={`secondary ${darkModeInput}`} onClick={addNewItem}>
           +Add New Item
         </Button>
+      </div>
 
-        <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
-          <Button className="secondary" onClick={handleCancel}>
-            Discard
+      <div className={`action-buttons action-buttons--new ${darkModeInput}`}>
+        <Button
+          className="secondary"
+          onClick={() => {
+            handleCancel();
+            //  setTimeout(() => resetFormValues, 0)
+          }}
+        >
+          Discard
+        </Button>
+        <div>
+          <Button className="dark" onClick={handleClickSaveDraft}>Save as Draft</Button>
+          <Button className="primary" onClick={handleClickSaveAndSend}>
+            Save & Send
           </Button>
-          <div>
-            <Button className="dark">Save as Draft</Button>
-            <Button className="primary" onClick={handleClickSaveAndSend}>
-              Save & Send
-            </Button>
-          </div>
         </div>
       </div>
     </div>

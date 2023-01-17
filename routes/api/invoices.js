@@ -76,10 +76,10 @@ router.post("/", async (req, res) => {
       ...req.body,
     });
 
-    invoice.items.forEach((item) => {
-      let itemTotal = item.quantity * item.price;
-      item.total = itemTotal;
-    });
+    // invoice.items.forEach((item) => {
+    //   let itemTotal = item.quantity * item.price
+    //   item.total = itemTotal;
+    // });
     await invoice.save();
     res.json(invoice);
   } catch (err) {
