@@ -293,7 +293,10 @@
 
 @media screen and (min-width: 1440px) {
   .invoices {
-    margin: 72px 252px;
+    padding-left: 252px;
+    padding-right: 252px;
+    height: 100vh;
+    overflow: scroll;
   }
 
   .invoices__header--left h1 {
